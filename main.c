@@ -1,7 +1,19 @@
-#include <stdio.h>
+#include "table.h"
+
 int main() {
-   // printf() displays the string inside quotation
-   printf("Hello, World!");
-   return 0;
+    // Example usage
+    char data[][100] = {
+        "Header1", "Header2", "Header3",
+        "Value1", "Value2", "Value3",
+        "Value4", "Value5", "Value6"
+    };
+
+    int rows = 3;
+    int columns = 3;
+    int cellWidth = 20;
+
+    drawTable(rows, columns, cellWidth, data);
+
+    return 0;
 }
 
