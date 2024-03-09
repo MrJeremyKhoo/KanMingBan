@@ -3,9 +3,9 @@
 int main() {
     // Example usage
     char data[][100] = {
-        "Header1", "Header2", "Header3",
-        "Value1", "Value2", "Value3",
-        "Value4", "Value5", "Value6"
+        "Todo", "T1", "T2",
+        "Progress", "Value2", "Value3",
+        "Done", "Value5", "Value6"
     };
 
     int rows = 3;
