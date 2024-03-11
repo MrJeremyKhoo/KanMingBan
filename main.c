@@ -1,4 +1,5 @@
 #include "table.h"
+#include "inputParser.h"
 
 int main() {
     // Example usage
@@ -11,7 +12,7 @@ int main() {
     int rows = 3;
     int columns = 3;
     int cellWidth = 20;
-
+    openFile();
     drawTable(rows, columns, cellWidth, data);
 
     return 0;
