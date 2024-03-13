@@ -12,7 +12,9 @@ int main() {
     int rows = 3;
     int columns = 3;
     int cellWidth = 20;
+    //inputParser.h
     openFile();
+    //table.h
     drawTable(rows, columns, cellWidth, data);
 
     return 0;
