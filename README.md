@@ -12,29 +12,33 @@ The motivation behind KanMingBan was the lack of lightweight CLI-based Kanban bo
 
 KanMingBan is designed to replace traditional sticky note Kanban boards. It focuses on offline usability and speed, aiming to provide a fast and efficient way to manage tasks without the need for cloud integration, advanced features, or heavy dependencies. The philosophy is to keep it simple and lightweight, resembling the traditional Kanban board experience.
 
-## RoadMap:
-
+## RoadMap MVP:
+- Draw table
+- Read Datafile
+- Display data file properly
 - Add tasks
 - Remove tasks
+- Promote task
+- Regress task
+- Swap task position on board
+- Limit on column
+  
+## RoadMap iteration2:
 - Edit task names
 - Task drilldown
 - Task lifecycle management
 - Task throughput analysis
+
+## RoadMap iteration3:
+- Tagging
+- Filtering
+  
+## RoadMap iteration4:
 - Basic GUI support (planned)
   - Windows
   - macOS
   - Linux/GNU
 
-## Good to have:
-
-The future development roadmap for KanMingBan includes:
-- Adding support for task manipulation (adding, removing, editing)
-- Implementing task lifecycle management (to-do, in-progress, done)
-- Analyzing task throughput and performance
-- Introducing a basic GUI for cross-platform usability
-  - Windows
-  - macOS
-  - Linux/GNU
 
 ## License
 
