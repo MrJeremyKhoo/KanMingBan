@@ -38,4 +38,4 @@ The future development roadmap for KanMingBan includes:
 
 ## License
 
-KanMingBan is copylefted software, released under the [GPL-3.0 license](LICENSE).
+KanMingBan is copylefted software, released under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
