@@ -35,7 +35,7 @@ KanMingBan is designed to replace traditional sticky note Kanban boards. It focu
 - Filtering
   
 ## RoadMap iteration4:
-- Basic GUI support (planned)
+- Basic GUI support
   - Windows
   - macOS
   - Linux/GNU
