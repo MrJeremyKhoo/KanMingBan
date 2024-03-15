@@ -3,31 +3,32 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXSTRLEN 100
-#define MAXCOLUMNS 3
-#define MAXROWS 100
+typedef char*** ARRAY_OF_STRARRAY;
 
-typedef char** PTR_STR_ARRAY;
-typedef char*** ARRAY_PTR_STR_ARRAY;
+ARRAY_OF_STRARRAY createKMBStruct(int maxStrLen, int numberColumns, int numberRows) {
+  ARRAY_OF_STRARRAY KanMingBan = malloc(sizeof(char **)); 
+  for(int i = 0; i < numberColumns; i++) {
+    KanMingBan[i] =  malloc(sizeof(char*));  
+    for(int j = 0; j < numberRows; j++) {
+    KanMingBan[i][j] = malloc(sizeof maxStrLen * sizeof(char));
+    }
+  }
+  return KanMingBan;
+}
 
-void createKMBStruct() {
-    PTR_STR_ARRAY toDo = malloc(sizeof(char *));
-    PTR_STR_ARRAY inProgress = malloc(sizeof(char *));
-    PTR_STR_ARRAY done = malloc(sizeof(char *));
+void freeKanMingBanRows(ARRAY_OF_STRARRAY KanMingBan, int i, int numberRows) {
+    for (int j = 0; j < numberRows; j++) {
+      free(KanMingBan[i][j]);
+    }
+}
 
-    toDo[0] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
-    toDo[1] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
-    inProgress[0] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
-    strcpy(toDo[0], "hehe");
-    strcpy(toDo[1], "hoho");
-    strcpy(inProgress[0], "haha");
-
-    ARRAY_PTR_STR_ARRAY KanMingBan = malloc(sizeof(char **) * 1); 
-    KanMingBan[0] = toDo;
-    KanMingBan[1] = inProgress;
-  printf(KanMingBan[0][0]);
-  printf(KanMingBan[0][1]);
-  printf(KanMingBan[1][0]);
+void freeKanMingBan(ARRAY_OF_STRARRAY *KanMingBan, int numberColumns, int numberRows) {
+  for (int i = 0; i < numberColumns; i++) {
+    freeKanMingBanRows(*KanMingBan, i, numberRows);
+    free(KanMingBan[i]); 
+  }
+  free(KanMingBan);
+  KanMingBan = NULL;
 }
 
 void openFile() {
@@ -37,7 +38,7 @@ void openFile() {
       printf("Error opening file!\n");
   }
     
-  createKMBStruct();
+  ARRAY_OF_STRARRAY KanMingBan = createKMBStruct(100, 3, 100);
 
   char line[256]; 
   while (fgets(line, sizeof(line), fptr) != NULL) {
