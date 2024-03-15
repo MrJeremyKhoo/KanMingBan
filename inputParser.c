@@ -3,40 +3,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct {
-    char (*toDo)[100];
-    char (*inProgress)[100];
-    char (*Done)[100];
-} KanMingBan;
+#define MAXSTRLEN 100
+#define MAXCOLUMNS 3
+#define MAXROWS 100
 
-void createKMBStruct(KanMingBan **KMBPtr) {
-  *KMBPtr = (KanMingBan*)malloc(sizeof(KanMingBan));
-  (*KMBPtr)->toDo = (char(*)[100])malloc(sizeof(char[100]));
-  strcpy((*KMBPtr)->toDo[0], "hello");
+typedef char** PTR_STR_ARRAY;
+typedef char*** ARRAY_PTR_STR_ARRAY;
+
+void createKMBStruct() {
+    PTR_STR_ARRAY toDo = malloc(MAXROWS * sizeof(char *));
+    PTR_STR_ARRAY inprogress = malloc(MAXROWS * sizeof(char *));
+    PTR_STR_ARRAY done = malloc(MAXROWS * sizeof(char *));
+
+    toDo[0] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
+    strcpy(toDo[0], "hehe");
+
+    ARRAY_PTR_STR_ARRAY KanMingBan = malloc(sizeof(char **) * MAXCOLUMNS); 
+    KanMingBan[0] = toDo;
+  printf(KanMingBan[0][0]);
 }
-
-void writeKMBColumn(KanMingBan **KMBPtr, int offset) {
-}
-
-
 
 void openFile() {
-      FILE *fptr = fopen("kmb.dat", "r");
+  FILE *fptr = fopen("kmb.dat", "r");
 
-    if (fptr == NULL) {
-        printf("Error opening file!\n");
-    }
+  if (fptr == NULL) {
+      printf("Error opening file!\n");
+  }
     
-  KanMingBan *KMBPtr;
+  createKMBStruct();
 
-  createKMBStruct(&KMBPtr);
+  char line[256]; 
+  while (fgets(line, sizeof(line), fptr) != NULL) {
+      printf("%s", line); 
+  }
 
-  printf("%s\n", (*KMBPtr).toDo[0]);
-
-    char line[256]; 
-    while (fgets(line, sizeof(line), fptr) != NULL) {
-        printf("%s", line); 
-    }
-
-    fclose(fptr); 
+  fclose(fptr); 
 }
