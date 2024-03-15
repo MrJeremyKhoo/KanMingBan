@@ -11,16 +11,23 @@ typedef char** PTR_STR_ARRAY;
 typedef char*** ARRAY_PTR_STR_ARRAY;
 
 void createKMBStruct() {
-    PTR_STR_ARRAY toDo = malloc(MAXROWS * sizeof(char *));
-    PTR_STR_ARRAY inprogress = malloc(MAXROWS * sizeof(char *));
-    PTR_STR_ARRAY done = malloc(MAXROWS * sizeof(char *));
+    PTR_STR_ARRAY toDo = malloc(sizeof(char *));
+    PTR_STR_ARRAY inProgress = malloc(sizeof(char *));
+    PTR_STR_ARRAY done = malloc(sizeof(char *));
 
     toDo[0] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
+    toDo[1] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
+    inProgress[0] = malloc(MAXSTRLEN * sizeof(char));  // Space for strings
     strcpy(toDo[0], "hehe");
+    strcpy(toDo[1], "hoho");
+    strcpy(inProgress[0], "haha");
 
-    ARRAY_PTR_STR_ARRAY KanMingBan = malloc(sizeof(char **) * MAXCOLUMNS); 
+    ARRAY_PTR_STR_ARRAY KanMingBan = malloc(sizeof(char **) * 1); 
     KanMingBan[0] = toDo;
+    KanMingBan[1] = inProgress;
   printf(KanMingBan[0][0]);
+  printf(KanMingBan[0][1]);
+  printf(KanMingBan[1][0]);
 }
 
 void openFile() {
