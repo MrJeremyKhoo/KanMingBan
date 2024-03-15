@@ -13,8 +13,9 @@ The motivation behind KanMingBan was the lack of lightweight CLI-based Kanban bo
 KanMingBan is designed to replace traditional sticky note Kanban boards. It focuses on offline usability and speed, aiming to provide a fast and efficient way to manage tasks without the need for cloud integration, advanced features, or heavy dependencies. The philosophy is to keep it simple and lightweight, resembling the traditional Kanban board experience.
 
 ## RoadMap MVP:
-- Draw table
-- Read Datafile
+- ~Draw table~
+- ~Read Datafile~
+- ~Store Datafile on heap~
 - Display data file properly
 - Add tasks
 - Remove tasks
