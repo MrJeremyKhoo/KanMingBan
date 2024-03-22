@@ -5,16 +5,16 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
 
 # Source files
-SRCS = inputParser.c main.c table.c
+SRCS = Application/inputParser.c main.c Presentation/table.c
 
 # Header files
-HDRS = inputParser.h table.h
+HDRS = ApplicationinputParser.h Presentation/table.h
 
 # Object files
 OBJS = $(SRCS:.c=.o)
 
 # Executable name
-EXEC = my_program
+EXEC = a
 
 # Default target
 all: $(EXEC)

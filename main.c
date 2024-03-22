@@ -1,5 +1,5 @@
-#include "table.h"
-#include "inputParser.h"
+#include "Presentation/table.h"
+#include "Application/inputParser.h"
 
 int main() {
     // Example usage
