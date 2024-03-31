@@ -1,0 +1,21 @@
+{
+  "HEADER": ["Todo", "In-Progress", "Done"],
+  "TASKS": [
+    ["task1"],
+    ["task2"],
+    ["task3"]
+ ],
+
+  "Todo": [
+    ["task1"]
+  ],
+
+  "In-Progress": [
+    ["task2"]
+  ],
+
+  "Done": [
+    ["task3"]
+  ]
+
+}
