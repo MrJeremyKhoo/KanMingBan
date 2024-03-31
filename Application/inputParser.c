@@ -33,26 +33,32 @@ void freeKanMingBan(ARRAY_OF_STRARRAY *KanMingBan, int numberColumns, int number
 }
 //------------
 
+void parseFileIntoKMB(FILE *fptr, ARRAY_OF_STRARRAY KanMingBan) {
+  char line[100]; 
+  while (fgets(line, sizeof(line), fptr) != NULL) {
+    char *header_start = strstr(line, "\"HEADER\":");
+    printf(header_start);
+    printf("%s", line); 
+  }
+
+}
+
+void catchFileError(FILE *fptr) {
+  if (fptr == NULL) {
+    printf("File does not exist. Creating a new file.\n");
+    fptr = fopen("kmb.dat", "w"); // Opening in write mode to create the file
+    if (fptr == NULL) {
+      printf("Error creating file!\n");
+      return;
+    }
+  }
+
+}
+
+
 void openFile() {
   FILE *fptr = fopen("data/kmb.dat", "r");
-
-  if (fptr == NULL) {
-        if (fptr == NULL) {
-        printf("File does not exist. Creating a new file.\n");
-        fptr = fopen("data/kmb.dat", "w"); // Opening in write mode to create the file
-          if (fptr == NULL) {
-              printf("Error creating file!\n");
-              return;
-          }
-        }
-  }
-    
   ARRAY_OF_STRARRAY KanMingBan = createKMBStruct(100, 3, 100);
-
-  char line[256]; 
-  while (fgets(line, sizeof(line), fptr) != NULL) {
-      printf("%s", line); 
-  }
-
+  parseFileIntoKMB(fptr, KanMingBan); 
   fclose(fptr); 
 }
