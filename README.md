@@ -15,8 +15,10 @@ KanMingBan is designed to replace traditional sticky note Kanban boards. It focu
 ## RoadMap MVP:
 - ~Draw table~
 - ~Read Datafile~
-- ~Store Datafile on heap~
+- ~Store Datafile on heap~ (Decided on JSON, Cross-compatibiliity, faster to parse)
+- Parse Datafile (single call, fread to buffer, reduce syscalls if line by line)
 - Display data file properly
+- Input handler class
 - Add tasks
 - Remove tasks
 - Promote task
