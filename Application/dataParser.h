@@ -1,5 +1,5 @@
-#ifndef INPUT_H
-#define INPUT_H
+#ifndef DATAPARSER_H
+#define DATAPARSER_H
 #include <stdio.h>
 
 void openFile();

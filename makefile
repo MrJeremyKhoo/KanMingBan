@@ -5,10 +5,10 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
 
 # Source files
-SRCS = Application/inputParser.c main.c Presentation/table.c
+SRCS = Application/dataParser.c Application/errorHandler.c main.c Presentation/table.c
 
 # Header files
-HDRS = ApplicationinputParser.h Presentation/table.h
+HDRS = Application/dataParser.h Application/errorHandler.h Presentation/table.h
 
 # Object files
 OBJS = $(SRCS:.c=.o)
