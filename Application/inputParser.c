@@ -35,11 +35,36 @@ void freeKanMingBan(ARRAY_OF_STRARRAY *KanMingBan, int numberColumns, int number
 
 void parseFileIntoKMB(FILE *fptr, ARRAY_OF_STRARRAY KanMingBan) {
   char line[100]; 
-  while (fgets(line, sizeof(line), fptr) != NULL) {
-    char *header_start = strstr(line, "\"HEADER\":");
-    printf(header_start);
-    printf("%s", line); 
-  }
+      // Determine the size of the file
+    fseek(fptr, 0, SEEK_END);
+    long int fileSize = ftell(fptr);
+    fseek(fptr, 0, SEEK_SET);
+    printf("File size: %ld bytes\n", fileSize);
+      // Allocate memory dynamically for the file content
+    char *buffer = (char *)malloc(fileSize + 1); // Plus 1 for null terminator
+    if (buffer == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
+
+    // Read the file content into the buffer
+    size_t bytesRead = fread(buffer, 1, fileSize, fptr);
+    if (bytesRead != fileSize) {
+        fprintf(stderr, "Error reading file\n");
+        exit(1);
+    }
+    buffer[fileSize] = '\0'; // Null-terminate the string
+
+    // Now 'buffer' contains the content of the file
+
+    char *header_start = strstr(buffer, "\"HEADER\":");
+    char *header_end = strchr(header_start, '\n');
+    if (header_end != NULL) {
+        // Calculate the length of the header
+        size_t header_length = header_end - header_start;
+        // Print the header content
+        printf("Header content:\n%.*s\n", (int)header_length, header_start);
+    }
 
 }
 
