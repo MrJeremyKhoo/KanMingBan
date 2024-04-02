@@ -18,7 +18,7 @@ void drawTable(int rows, int columns, int cellWidth, ARRAY_OF_STRARRAY kmb) {
     drawRowBorder(cellWidth, columns);
     int area = rows * columns;
 
-    for (int i = 0; i < area; i++) {
+    for (int i = 0; i < 3; i++) {
       drawDataInRow(cellWidth, kmb[i]);
       if(i % columns == columns - 1) {
         printf("|\n");
