@@ -2,6 +2,8 @@
 #define TABLE_H
 #define ROWCHARSIZE 100
 
-void drawTable(int rows, int columns, int cellWidth, char data[][ROWCHARSIZE]);
+typedef char*** ARRAY_OF_STRARRAY;
+
+void drawTable(int rows, int columns, int cellWidth, ARRAY_OF_STRARRAY kmb);
 
 #endif // MYHEADER_H
