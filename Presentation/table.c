@@ -9,18 +9,17 @@ void drawRowBorder(int cellWidth, int columns) {
     printf("\n");
 }
 
-void drawDataInRow(int cellWidth, char data[]) {
-  printf("| %-*s ", cellWidth, data);
+void drawDataInRow(int cellWidth, char** kmb) {
+  printf("| %-*s ", cellWidth, *kmb);
 
 }
 
-void drawTable(int rows, int columns, int cellWidth, char data[][ROWCHARSIZE]) {
+void drawTable(int rows, int columns, int cellWidth, ARRAY_OF_STRARRAY kmb) {
     drawRowBorder(cellWidth, columns);
     int area = rows * columns;
 
     for (int i = 0; i < area; i++) {
-      drawDataInRow(cellWidth, data[i]);
-
+      drawDataInRow(cellWidth, kmb[i]);
       if(i % columns == columns - 1) {
         printf("|\n");
         drawRowBorder(cellWidth, columns);

@@ -1,7 +1,8 @@
 #ifndef DATAPARSER_H
 #define DATAPARSER_H
 #include <stdio.h>
+typedef char*** ARRAY_OF_STRARRAY;
 
-void openFile();
+ARRAY_OF_STRARRAY openFile();
 
 #endif
