@@ -5,8 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void parseHeaderToKmb (char* buffer, ARRAY_OF_STRARRAY KanMingBan) {
-  char *header_start = strstr(buffer, "\"HEADER\":");
+struct kmb parseHeaderToKmb (char** buffer, struct kmb kmb1 ) {
+  char *b = *buffer;
+  char *header_start = strstr(b, "\"HEADER\":");
   char *header_opening_bracket = strchr(header_start, '[');
   char *header_ending_bracket = strchr(header_start + 1, ']');
   char *start_doublequote = strchr(header_opening_bracket, '\"');
@@ -15,18 +16,45 @@ void parseHeaderToKmb (char* buffer, ARRAY_OF_STRARRAY KanMingBan) {
   //some error catching needed here
   size_t i = 0;
   while(start_doublequote < header_ending_bracket) {
-    strncpy(KanMingBan[i][0], start_doublequote + 1, task_length);
-    KanMingBan[i][0][task_length] = '\0';
+    strncpy(kmb1.KanMingBan[i][0], start_doublequote + 1, task_length);
+    strncpy(kmb1.Header[i], start_doublequote + 1, task_length);
+    kmb1.KanMingBan[i][0][task_length] = '\0';
     start_doublequote = strchr(end_doublequote + 1, '\"');
     end_doublequote = strchr(start_doublequote + 1, '\"');
     task_length = end_doublequote - start_doublequote - 1;
-    printf("%s\n", KanMingBan[i][0]);
     i++;
   }
-
+  *buffer = header_ending_bracket;
+  kmb1.Header[i] = NULL;
+  return kmb1;
 }
 
-void parseFileIntoKMB(FILE *fptr, ARRAY_OF_STRARRAY KanMingBan) {
+struct kmb parseTaskToKmb (char* buffer, struct kmb kmb1 ) {
+  for (int i = 0; kmb1.Header[i] != NULL; ++i) {
+    char *header_start = strstr(buffer, kmb1.Header[i]);
+    char *header_opening_bracket = strchr(header_start, '[');
+    char *header_ending_bracket = strchr(header_start + 1, ']');
+    char *start_doublequote = strchr(header_opening_bracket, '\"');
+    char *end_doublequote = strchr(start_doublequote + 1, '\"');
+    int task_length = end_doublequote - start_doublequote - 1;
+
+    size_t j = 1;
+    while(start_doublequote < header_ending_bracket) {
+      strncpy(kmb1.KanMingBan[i][j], start_doublequote + 1, task_length);
+      kmb1.KanMingBan[i][j][task_length] = '\0';
+      start_doublequote = strchr(end_doublequote + 1, '\"');
+      if(start_doublequote == NULL) {
+        break;
+      }//end of file
+      end_doublequote = strchr(start_doublequote + 1, '\"');
+      task_length = end_doublequote - start_doublequote - 1;
+      j++;
+    }
+  };
+  return kmb1;
+}
+
+struct kmb parseFileIntoKMB(FILE *fptr, struct kmb kmb1) {
   // Determine the size of the file
   fseek(fptr, 0, SEEK_END);
   long int fileSize = ftell(fptr);
@@ -40,13 +68,14 @@ void parseFileIntoKMB(FILE *fptr, ARRAY_OF_STRARRAY KanMingBan) {
   size_t bytesRead = fread(buffer, 1, fileSize, fptr);
   checkFileSize(bytesRead, fileSize);
   buffer[fileSize] = '\0'; // Null-terminate the string
-  parseHeaderToKmb(buffer, KanMingBan);
+  kmb1 = parseHeaderToKmb(&buffer, kmb1);
+  return kmb1 = parseTaskToKmb(buffer, kmb1);
 }
 
 ARRAY_OF_STRARRAY openFile() {
   FILE *fptr = fopen("data/kmb.dat", "r");
-  ARRAY_OF_STRARRAY KanMingBan = createKMBStruct(100, 3, 100);
-  parseFileIntoKMB(fptr, KanMingBan); 
-  fclose(fptr); 
-  return KanMingBan;
+  struct kmb kmb1 = createKanMingBan(100, 3, 100);
+  kmb1 = parseFileIntoKMB(fptr, kmb1); 
+  fclose(fptr);
+  return kmb1.KanMingBan;
 }
