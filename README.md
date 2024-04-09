@@ -6,11 +6,21 @@ KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to pr
 
 ## Motivation
 
-The motivation behind KanMingBan was the lack of lightweight CLI-based Kanban board solutions. Existing alternatives either had limited features, heavy dependencies, or were tightly integrated with other tools like text editors or cloud services. KanMingBan aims to fill this gap by providing a simple, fast, and offline Kanban board experience.
+The motivation behind KanMingBan was the lack of lightweight CLI-based Kanban board solutions. Existing alternatives either had limited features, heavy dependencies, or were tightly integrated with other tools like text editors or cloud services.
+
+Existing webbased tools also do not embody actual KanBan. Throughput, cycle time, Lead time and work in progress should be measured. Instead these tools focus on collaboration (with a subscription)
+
+currently it is written in C so that future extentions do not get bogged down by the language. There is also no reason for just-in-time compilation for CRUD logic.
+
+Not written in Rust because there should be no need for strict memory safety. (essentially there is one DS and one user)
+
+Not written in C++/Java because there is no need for their abstract data types
+
+Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application. 
 
 ## Philosophy
 
-KanMingBan is designed to replace traditional sticky note Kanban boards. It focuses on offline usability and speed, aiming to provide a fast and efficient way to manage tasks without the need for cloud integration, advanced features, or heavy dependencies. The philosophy is to keep it simple and lightweight, resembling the traditional Kanban board experience.
+KanMingBan is designed to replace traditional sticky note Kanban boards. It focuses on offline usability and speed, aiming to provide a fast and efficient way to manage tasks without the need for cloud integration, advanced features, or heavy dependencies. The philosophy is to keep it simple and lightweight, resembling the traditional Kanban board experience. A CRUD app should not take more that half a second to load/interface with
 
 ## RoadMap MVP:
 - ~Draw table~
