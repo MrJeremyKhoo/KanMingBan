@@ -11,6 +11,8 @@ struct kmb {
   ARRAY_OF_STRARRAY KanMingBan;
   char** Header;
   char** Tasks;
+  int column;
+  int row;
 };
 
 struct kmb createKanMingBan(int maxStrLen, int numberColumns, int numberRows);

@@ -1,5 +1,6 @@
 #include "Presentation/table.h"
 #include "Application/dataParser.h"
+#include "Application/kmbInit.h"
 typedef char*** ARRAY_OF_STRARRAY;
 int main() {
     // Example usage
@@ -12,9 +13,9 @@ int main() {
     //int rows = 3;
     //int columns = 3;
     int cellWidth = 20;
-    //inputParser.h
     //table.h
-    drawTable(3, 3, cellWidth, openFile());
+    //dataparser openfile
+    drawTable(cellWidth, openFile());
 
     return 0;
 }

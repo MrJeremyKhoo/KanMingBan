@@ -3,6 +3,6 @@
 #include <stdio.h>
 typedef char*** ARRAY_OF_STRARRAY;
 
-ARRAY_OF_STRARRAY openFile();
+struct kmb openFile();
 
 #endif
