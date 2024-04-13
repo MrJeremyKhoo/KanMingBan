@@ -8,11 +8,11 @@
  ],
 
   "Todo": [
-    ["task1", "task5"]
+    ["task5", "task6"]
   ],
 
   "In-Progress": [
-    ["task2","take", "hshsh", "hshhsh", "hoh" ]
+    ["task1", "task3", "task4"]
   ],
 
   "Done": [
