@@ -14,12 +14,13 @@ void drawDataInRow(int cellWidth, char* kmb) {
 
 }
 
-void drawTable(int rows, int columns, int cellWidth, struct kmb kmb) {
+void drawTable(int cellWidth, struct kmb kmb) {
+  int columns = kmb.column;
+  int rows = kmb.row;
     drawRowBorder(cellWidth, columns);
-    int area = rows * columns;
-    //check
-  for (int j=0; j<4; j++) {
-    for (int i = 0; i < 3; i++) {
+    //check:warn("%s");
+  for (int j=0; j<rows; j++) {
+    for (int i = 0; i < columns; i++) {
       drawDataInRow(cellWidth, kmb.KanMingBan[i][j]);
       if(i % columns == columns - 1) {
         printf("|\n");

@@ -15,7 +15,7 @@ int main() {
     int cellWidth = 20;
     //table.h
     //dataparser openfile
-    drawTable(3, 3, cellWidth, openFile());
+    drawTable(cellWidth, openFile());
 
     return 0;
 }

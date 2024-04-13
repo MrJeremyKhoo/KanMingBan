@@ -2,7 +2,7 @@
 CC = gcc
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -std=c99
+CFLAGS = -g
 
 # Source files
 SRCS = Application/dataParser.c Application/errorHandler.c Application/kmbInit.c main.c Presentation/table.c
