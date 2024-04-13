@@ -44,12 +44,14 @@ struct kmb parseTaskToKmb (char* buffer, struct kmb kmb1 ) {
       kmb1.KanMingBan[i][j][task_length] = '\0';
       start_doublequote = strchr(end_doublequote + 1, '\"');
       if(start_doublequote == NULL) {
+        j++;
         break;
       }//end of file
       end_doublequote = strchr(start_doublequote + 1, '\"');
       task_length = end_doublequote - start_doublequote - 1;
       j++;
     }
+    kmb1.KanMingBan[i][j] = NULL;
   };
   return kmb1;
 }
@@ -72,10 +74,10 @@ struct kmb parseFileIntoKMB(FILE *fptr, struct kmb kmb1) {
   return kmb1 = parseTaskToKmb(buffer, kmb1);
 }
 
-ARRAY_OF_STRARRAY openFile() {
+struct kmb openFile() {
   FILE *fptr = fopen("data/kmb.dat", "r");
   struct kmb kmb1 = createKanMingBan(100, 3, 100);
   kmb1 = parseFileIntoKMB(fptr, kmb1); 
   fclose(fptr);
-  return kmb1.KanMingBan;
+  return kmb1;
 }

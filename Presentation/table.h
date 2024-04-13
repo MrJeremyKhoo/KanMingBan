@@ -1,9 +1,8 @@
 #ifndef TABLE_H
 #define TABLE_H
 #define ROWCHARSIZE 100
+#include "../Application/kmbInit.h"
 
-typedef char*** ARRAY_OF_STRARRAY;
-
-void drawTable(int rows, int columns, int cellWidth, ARRAY_OF_STRARRAY kmb);
+void drawTable(int rows, int columns, int cellWidth, struct kmb);
 
 #endif // MYHEADER_H
