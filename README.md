@@ -8,7 +8,7 @@ KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to pr
 
 The motivation behind KanMingBan was the lack of lightweight CLI-based Kanban board solutions. Existing alternatives either had limited features, heavy dependencies (they tend to be toy projects), or were tightly integrated with other tools like text editors or cloud services (enterprise level)
 
-Existing webbased tools also do not embody actual KanBan. Throughput, cycle time, Lead time and work in progress should be measured. Instead these tools focus on collaboration (with a subscription)
+Existing webbased tools also do not embody actual KanBan. Throughput, cycle time, Lead time and work in progress should be measured, if they are measured they are usually for enterprise and not personal use.
 
 currently it is written in C so that future extentions do not get bogged down by the language choice. There is also no reason for just-in-time compilation for CRUD logic.
 
@@ -20,9 +20,12 @@ Not in Golang because of performance, there is no need for bounds checking and g
 
 ## Philosophy
 
-KanMingBan is designed to replace traditional sticky note Kanban boards. It focuses on offline usability and speed, aiming to provide a fast and efficient way to manage tasks without the need for cloud integration, advanced features, or heavy dependencies. The philosophy is to keep it simple and lightweight, resembling the traditional Kanban board experience. A CRUD app should not take more a tenth of a second to load/interface with.
+KanMingBan should be a portable personal Kanban boards. Should be as quick and self-contained as a kanban board itself.
 
-Following Kanban philosophy lead time, cycle time, work-in-progress, and throughput should also be measured eventually
+keep it simple and lightweight
+make it fast
+(A CRUD app should not take more a tenth of a second to load/interface with.)
+
 
 ## RoadMap MVP:
 - ~Draw table~
@@ -36,15 +39,14 @@ Following Kanban philosophy lead time, cycle time, work-in-progress, and through
 - Promote task
 - Regress task
 - Swap task position on board
-- Limit on column
   
 ## RoadMap iteration2:
-- Edit task names
-- Task drilldown
 - Task lifecycle management
 - Task throughput analysis
 
 ## RoadMap iteration3:
+- Edit task names
+- Task drilldown
 - Tagging
 - Filtering
   
