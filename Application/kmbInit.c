@@ -1,7 +1,7 @@
 #include "kmbInit.h"
 
 
-struct kmb createKanMingBan(int maxStrLen, int numberColumns, int numberRows) {
+struct kmb* createKanMingBan(int maxStrLen, int numberColumns, int numberRows) {
   ARRAY_OF_STRARRAY KanMingBan = malloc(numberColumns * sizeof(char **)); 
   for(int i = 0; i < numberColumns; i++) {
     KanMingBan[i] =  malloc(numberRows * sizeof(char*));  
@@ -10,15 +10,15 @@ struct kmb createKanMingBan(int maxStrLen, int numberColumns, int numberRows) {
     }
   }
 
-  char ** Header = malloc(sizeof(char*));
+  char ** Header = malloc(numberColumns * sizeof(char*));
   for(int i = 0; i < numberColumns; i++) {
-    Header[i] = malloc(maxStrLen * sizeof(char));
+    Header[i] = (char*)malloc(maxStrLen * sizeof(char));
   }
-  struct kmb kmb1;
-  kmb1.KanMingBan = KanMingBan;
-  kmb1.Header = Header;
-  
-  return kmb1;
+  struct kmb *pkmb1 = malloc(sizeof(struct kmb));
+  pkmb1->KanMingBan = KanMingBan;
+  pkmb1->Header = Header;
+
+  return pkmb1;
 }
 
 //free methods
