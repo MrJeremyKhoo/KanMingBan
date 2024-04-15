@@ -5,9 +5,7 @@
 
 typedef char*** ARRAY_OF_STRARRAY;
 int main(int argc, char *argv[]) {
-
     int cellWidth = 20;
-
     //table: draw table
     //dataparser: openfile
     if(argc  >  1) {

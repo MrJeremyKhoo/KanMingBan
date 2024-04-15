@@ -5,6 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+void copystr(char* pointer, struct kmb *pkmb1, int length, int i, int j) {
+      for (int k = 0; k < length; ++k) {
+        pkmb1->KanMingBan[i][j][k] = pointer[k+1];
+      }
+
+
+}
 void parseHeaderToKmb (char** buffer, struct kmb *pkmb1 ) {
   char *b = *buffer;
   char *header_start = strstr(b, "\"HEADER\":");
@@ -13,9 +20,10 @@ void parseHeaderToKmb (char** buffer, struct kmb *pkmb1 ) {
   char *start_doublequote = strchr(header_opening_bracket, '\"');
   char *end_doublequote = strchr(start_doublequote + 1, '\"');
   int task_length = end_doublequote - start_doublequote - 1;
+  //some error catching needed here
   size_t i = 0;
   while(start_doublequote < header_ending_bracket) {
-    strncpy(pkmb1->KanMingBan[i][0], start_doublequote+1, task_length);
+    copystr(start_doublequote, pkmb1, task_length, i, 0);
     for (int k = 0; k < task_length; ++k) {
       pkmb1->Header[i][k] = (start_doublequote[k+1]);
     }
@@ -37,15 +45,14 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     char *header_opening_bracket = strchr(header_start, '[');
     char *header_ending_bracket = strchr(header_start + 1, ']');
     char *start_doublequote = strchr(header_opening_bracket, '\"');
-    if(start_doublequote == NULL) {
-      break;
-    } //last header no task
     char *end_doublequote = strchr(start_doublequote + 1, '\"');
     int task_length = end_doublequote - start_doublequote - 1;
 
     size_t j = 1;
     while(start_doublequote < header_ending_bracket) {
-      strncpy(pkmb1->KanMingBan[i][j], start_doublequote+1, task_length);
+      for (int k = 0; k < task_length; ++k) {
+        pkmb1->KanMingBan[i][j][k] = (start_doublequote[k+1]);
+      }
       pkmb1->KanMingBan[i][j][task_length] = '\0';
       start_doublequote = strchr(end_doublequote + 1, '\"');
       if(start_doublequote == NULL) {
@@ -59,7 +66,7 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     if (j>max_j) {max_j = j;}
     i++;
   };
-  out:
+
   pkmb1->column = i;
   pkmb1->row = max_j;
 }
