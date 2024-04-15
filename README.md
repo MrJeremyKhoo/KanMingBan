@@ -33,9 +33,11 @@ make it fast
 - ~Store Datafile on heap~ (Decided to parse from JSON, Cross-compatibiliity, faster to parse)
 - ~Parse Datafile (single call, fread to buffer, reduce syscalls if line by line)~
 - ~Display data file properly~
-- Argument handler class
-- Add tasks
-- Remove tasksh
+- ~Argument handler~
+- ~Add tasks~
+- tasks have ID and description
+- task ID cache
+- Remove tasks
 - Promote task
 - Regress task
 - Swap task position on board
