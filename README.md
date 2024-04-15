@@ -40,9 +40,9 @@ make it fast
 - Remove tasks
 - Promote task
 - Regress task
-- Swap task position on board
   
 ## RoadMap iteration2:
+- Swap task position on board
 - Task lifecycle management
 - Task throughput analysis
 
