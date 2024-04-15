@@ -7,16 +7,18 @@
 
 enum Command {
 //add
-  a,
+  add ='a',
 //regress
-  r,
+  regress ='r',
 //delete
-  d,
+  del = 'd',
 //swap
-  s,
-};
-void command(char* c);
+  swap = 's',
 
-void addCommand(enum Command c);
+	view = 'v',
+};
+void command(char c);
+
+void addCommand();
 
 #endif

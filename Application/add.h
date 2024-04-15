@@ -1,8 +1,9 @@
-#ifndef DATAPARSER_H
-#define DATAPARSER_H
+#ifndef ADDPARSER_H
+#define ADDPARSER_H
 #include <stdio.h>
 typedef char*** ARRAY_OF_STRARRAY;
 
-struct kmb add();
+
+void addTaskFile(char* task, char* header);
 
 #endif

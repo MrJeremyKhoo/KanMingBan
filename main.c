@@ -9,9 +9,11 @@ int main(int argc, char *argv[]) {
     //table: draw table
     //dataparser: openfile
     if(argc  >  1) {
-      command(argv[1]);
+      command(*argv[1]);
     }
-    drawTable(cellWidth, openFile());
+    else {
+      command('v');
+    }
   
     // Print the number of command-line arguments
     printf("Number of arguments: %d\n", argc);

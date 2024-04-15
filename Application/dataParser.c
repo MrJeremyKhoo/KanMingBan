@@ -1,34 +1,12 @@
 #include "dataParser.h"
+#include "add.h"
+#include "headerParser.h"
 #include "errorHandler.h"
 #include "kmbInit.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void parseHeaderToKmb (char** buffer, struct kmb *pkmb1 ) {
-  char *b = *buffer;
-  char *header_start = strstr(b, "\"HEADER\":");
-  char *header_opening_bracket = strchr(header_start, '[');
-  char *header_ending_bracket = strchr(header_start + 1, ']');
-  char *start_doublequote = strchr(header_opening_bracket, '\"');
-  char *end_doublequote = strchr(start_doublequote + 1, '\"');
-  int task_length = end_doublequote - start_doublequote - 1;
-  size_t i = 0;
-  while(start_doublequote < header_ending_bracket) {
-    strncpy(pkmb1->KanMingBan[i][0], start_doublequote+1, task_length);
-    for (int k = 0; k < task_length; ++k) {
-      pkmb1->Header[i][k] = (start_doublequote[k+1]);
-    }
-    pkmb1->KanMingBan[i][0][task_length] = '\0';
-    start_doublequote = strchr(end_doublequote + 1, '\"');
-    end_doublequote = strchr(start_doublequote + 1, '\"');
-    task_length = end_doublequote - start_doublequote - 1;
-    i++;
-  }
-  *buffer = header_ending_bracket;
-  pkmb1->Header[i] = NULL;
-}
-//todo:when last column no task it crashes
 void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
   size_t i = 0;
   size_t max_j = 1;
@@ -39,7 +17,7 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     char *start_doublequote = strchr(header_opening_bracket, '\"');
     if(start_doublequote == NULL) {
       break;
-    } //last header no task
+    } //last header no file
     char *end_doublequote = strchr(start_doublequote + 1, '\"');
     int task_length = end_doublequote - start_doublequote - 1;
 
@@ -59,7 +37,6 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     if (j>max_j) {max_j = j;}
     i++;
   };
-  out:
   pkmb1->column = i;
   pkmb1->row = max_j;
 }
@@ -81,7 +58,7 @@ void parseFileIntoKMB(FILE *fptr, struct kmb *pkmb1) {
 
 struct kmb openFile() {
   FILE *fptr = fopen("data/kmb.dat", "r");
-  struct kmb *pkmb1 = createKanMingBan(100, 100, 10);
+  struct kmb *pkmb1 = createKanMingBan(100, 100, 100);
   parseFileIntoKMB(fptr, pkmb1); 
   fclose(fptr);
   return *pkmb1;
