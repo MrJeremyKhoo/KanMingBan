@@ -13,9 +13,9 @@ void command(char c) {
   switch(argChar) {
     case add:
       addCommand();
-    case view:
       break;
+    case view:
   }
-
   drawTable(20, openFile());
+
 }

@@ -1,18 +1,12 @@
 {
   "HEADER": ["Todo", "In-Progress", "Done"]
-  "TASKS": [
-    ["task1"],
-    ["task2"],
-    ["task3"],
-    ["task3"]
- ],
 
   "Todo": [
     {"id": 1, "name": "task1", "description": "Description for task1"},
     {"id": 2, "name": "task2", "description": "Description for task2"},
     {"id": 3, "name": "task3", "description": "Description for task3"},
     {"id": 4, "name": "task4", "description": "Description for task4"},
-    ,"{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}"],
+  ,"{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}","{"id": 4, "name": "this", "description": "Description for task4"}"],
 
   "In-Progress": [
     {"id": 6, "name": "task6", "description": "Description for task1"},
