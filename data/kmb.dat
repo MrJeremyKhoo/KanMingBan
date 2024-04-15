@@ -1,5 +1,5 @@
 {
-  "HEADER": ["Todo", "In-Progress", "Done", "pee", "hhh", "header"],
+  "HEADER": ["Todo", "In-Progress", "Done"]
   "TASKS": [
     ["task1"],
     ["task2"],
@@ -8,7 +8,7 @@
  ],
 
   "Todo": [
-    ["task5", "task6"]
+    ["task5", "task6","this","this","this"]
   ],
 
   "In-Progress": [
@@ -17,19 +17,6 @@
 
   "Done": [
     ["task3"]
-  ],
-
-  "pee": [
-    ["task3"]
   ]
-
-  "hhh": [
-    ["sds"]
-  ]
-
-  "header":[
-    ["hshs"]
-	]
-
 }
 

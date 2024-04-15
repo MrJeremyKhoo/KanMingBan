@@ -60,6 +60,7 @@ void addTaskFile(char* task, char* header) {
     // Write the new buffer back to the file
     fseek(fptr, 0, SEEK_SET);
     fwrite(newBuffer, 1, newSize - 1, fptr); // -1 to exclude null terminator
+		fflush(fptr);
     fclose(fptr);
     free(buffer);
     free(newBuffer);
