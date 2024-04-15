@@ -14,7 +14,7 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     char *header_start = strstr(buffer, pkmb1->Header[i]);
     char *header_opening_bracket = strchr(header_start, '[');
     char *header_ending_bracket = strchr(header_start + 1, ']');
-    char *start_doublequote = strchr(header_opening_bracket, '\"');
+    char *start_doublequote = strstr(header_opening_bracket, "name\": \"")+7;
     if(start_doublequote == NULL) {
       break;
     } //last header no file
@@ -25,11 +25,12 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     while(start_doublequote < header_ending_bracket) {
       strncpy(pkmb1->KanMingBan[i][j], start_doublequote+1, task_length);
       pkmb1->KanMingBan[i][j][task_length] = '\0';
-      start_doublequote = strchr(end_doublequote + 1, '\"');
+      start_doublequote = strstr(end_doublequote + 1, "name\": \"");
       if(start_doublequote == NULL) {
         j++;
         break;
       }//end of file
+      start_doublequote += 7;
       end_doublequote = strchr(start_doublequote + 1, '\"');
       task_length = end_doublequote - start_doublequote - 1;
       j++;
