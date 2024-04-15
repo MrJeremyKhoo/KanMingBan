@@ -1,21 +1,27 @@
 #include "Presentation/table.h"
 #include "Application/dataParser.h"
 #include "Application/kmbInit.h"
-typedef char*** ARRAY_OF_STRARRAY;
-int main() {
-    // Example usage
-//    char data[][100] = {
-//        "Todo", "T1", "T2",
-//        "Progress", "Value2", "Value3",
-//        "Done", "Value5", "Value6"
-//    };
+#include "Business/commandParser.h"
 
-    //int rows = 3;
-    //int columns = 3;
+typedef char*** ARRAY_OF_STRARRAY;
+int main(int argc, char *argv[]) {
     int cellWidth = 20;
-    //table.h
-    //dataparser openfile
-    drawTable(cellWidth, openFile());
+    //table: draw table
+    //dataparser: openfile
+    if(argc  >  1) {
+      command(*argv[1]);
+    }
+    else {
+      command('v');
+    }
+  
+    // Print the number of command-line arguments
+    printf("Number of arguments: %d\n", argc);
+
+    // Print each command-line argument
+    for (int i = 0; i < argc; i++) {
+        printf("argv[%d] = %s\n", i, argv[i]);
+    }
 
     return 0;
 }

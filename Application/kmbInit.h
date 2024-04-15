@@ -15,7 +15,7 @@ struct kmb {
   int row;
 };
 
-struct kmb createKanMingBan(int maxStrLen, int numberColumns, int numberRows);
+struct kmb* createKanMingBan(int maxStrLen, int numberColumns, int numberRows);
 void freeKanMingBanRows(ARRAY_OF_STRARRAY KanMingBan, int i, int numberRows);
 void freeKanMingBan(ARRAY_OF_STRARRAY *KanMingBan, int numberColumns, int numberRows);
 
