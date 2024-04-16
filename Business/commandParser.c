@@ -5,7 +5,7 @@
 
 //todo: implment add task
 void addCommand() {
-  addTaskFile("{\"id\": 4, \"name\": \"this\", \"description\": \"Description for task4\"}", "Todo");
+  addTaskFile("{\"id\": 4, \"name\": \"this\", \"des\": \"Description for task4\"}", "Todo");
 }
 
 void command(char c) {
