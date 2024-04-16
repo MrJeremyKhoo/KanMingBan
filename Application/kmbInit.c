@@ -2,15 +2,15 @@
 
 
 struct kmb* createKanMingBan(int maxStrLen, int numberColumns, int numberRows) {
-  ARRAY_OF_STRARRAY KanMingBan = calloc(numberColumns, sizeof(char **)); 
+  ARRAY_OF_STRARRAY KanMingBan = malloc(numberColumns * sizeof(char **)); 
   for(int i = 0; i < numberColumns; i++) {
-    KanMingBan[i] =  calloc(numberRows, sizeof(char*));  
+    KanMingBan[i] =  malloc(numberRows * sizeof(char*));  
     for(int j = 0; j < numberRows; j++) {
     KanMingBan[i][j] = calloc(maxStrLen, sizeof(char));
     }
   }
 
-  char ** Header = calloc(numberColumns, sizeof(char*));
+  char ** Header = malloc(numberColumns * sizeof(char*));
   for(int i = 0; i < numberColumns; i++) {
     Header[i] = (char*)calloc(maxStrLen, sizeof(char));
   }
