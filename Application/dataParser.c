@@ -12,27 +12,28 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
   size_t max_j = 1;
   while(pkmb1->Header[i] != NULL) {
     char *header_start = strstr(buffer, pkmb1->Header[i]);
-    char *header_opening_bracket = strchr(header_start, '[');
-    char *header_ending_bracket = strchr(header_start + 1, ']');
-    char *start_doublequote = strstr(header_opening_bracket, "name\": \"")+7;
-    if(start_doublequote == NULL) {
+    char *array_opening_bracket = strchr(header_start, '[');
+    char *array_ending_bracket = strchr(header_start, ']');
+    char *name_start_doublequote = strstr(array_opening_bracket, "name\": \"")+7;
+    char *id = strstr(array_opening_bracket, "name\": \"")+7;
+    if(name_start_doublequote == NULL) {
       break;
     } //last header no file
-    char *end_doublequote = strchr(start_doublequote + 1, '\"');
-    int task_length = end_doublequote - start_doublequote - 1;
+    char *name_end_doublequote = strchr(name_start_doublequote + 1, '\"');
+    int task_length = name_end_doublequote - name_start_doublequote - 1;
 
     size_t j = 1;
-    while(start_doublequote < header_ending_bracket) {
-      strncpy(pkmb1->KanMingBan[i][j], start_doublequote+1, task_length);
+    while(name_start_doublequote < array_ending_bracket) {
+      strncpy(pkmb1->KanMingBan[i][j], name_start_doublequote+1, task_length);
       pkmb1->KanMingBan[i][j][task_length] = '\0';
-      start_doublequote = strstr(end_doublequote + 1, "name\": \"");
-      if(start_doublequote == NULL) {
+      name_start_doublequote = strstr(name_end_doublequote + 1, "name\": \"");
+      if(name_start_doublequote == NULL) {
         j++;
         break;
       }//end of file
-      start_doublequote += 7;
-      end_doublequote = strchr(start_doublequote + 1, '\"');
-      task_length = end_doublequote - start_doublequote - 1;
+      name_start_doublequote += 7;
+      name_end_doublequote = strchr(name_start_doublequote + 1, '\"');
+      task_length = name_end_doublequote - name_start_doublequote - 1;
       j++;
     }
     if (j>max_j) {max_j = j;}
@@ -58,8 +59,8 @@ void parseFileIntoKMB(FILE *fptr, struct kmb *pkmb1) {
 }
 
 struct kmb openFile() {
-  FILE *fptr = fopen("data/kmb.dat", "r");
-  struct kmb *pkmb1 = createKanMingBan(100, 100, 100);
+  FILE *fptr = fopen("data/kmb.dat", "rb");
+  struct kmb *pkmb1 = createKanMingBan(10, 3, 20);
   parseFileIntoKMB(fptr, pkmb1); 
   fclose(fptr);
   return *pkmb1;

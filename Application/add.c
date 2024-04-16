@@ -6,14 +6,14 @@
 #include <string.h>
 
 void addTaskFile(char* task, char* header) {
-    FILE *fptr = fopen("data/kmb.dat", "r+");
+    FILE *fptr = fopen("data/kmb.dat", "rb+");
     if (fptr == NULL) {
         perror("Error opening file");
         return;
     }
 
-    char new_str[strlen(task)+4];
-    snprintf(new_str, strlen(task)+4, ",\"%s\"", task);
+    char new_str[strlen(task)+1];
+    snprintf(new_str, strlen(task)+1, ",%s", task);
 		task = new_str;
 
     // Determine the size of the file
@@ -45,7 +45,7 @@ void addTaskFile(char* task, char* header) {
     int position = lastClosingBracket - buffer;
     // Create new buffer with enough space for the new task and null terminator
     int taskLen = strlen(task);
-    int newSize = fileSize + taskLen + 1;
+    int newSize = fileSize + taskLen;
     char *newBuffer = (char *)malloc(newSize);
 
     // Copy the original content up to the insertion point
@@ -59,10 +59,12 @@ void addTaskFile(char* task, char* header) {
 
     // Write the new buffer back to the file
     fseek(fptr, 0, SEEK_SET);
-    fwrite(newBuffer, 1, newSize - 1, fptr); // -1 to exclude null terminator
+    fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator
+    fseek(fptr, 0, SEEK_SET);
 		fflush(fptr);
+
     fclose(fptr);
-    free(buffer);
     free(newBuffer);
+    free(buffer);
 	return;
 }
