@@ -13,7 +13,7 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
   while(pkmb1->Header[i] != NULL) {
     char *header_start = strstr(buffer, pkmb1->Header[i]);
     char *array_opening_bracket = strchr(header_start, '[');
-    char *array_ending_bracket = strchr(header_start + 1, ']');
+    char *array_ending_bracket = strchr(header_start, ']');
     char *name_start_doublequote = strstr(array_opening_bracket, "name\": \"")+7;
     char *id = strstr(array_opening_bracket, "name\": \"")+7;
     if(name_start_doublequote == NULL) {
@@ -59,7 +59,7 @@ void parseFileIntoKMB(FILE *fptr, struct kmb *pkmb1) {
 }
 
 struct kmb openFile() {
-  FILE *fptr = fopen("data/kmb.dat", "r");
+  FILE *fptr = fopen("data/kmb.dat", "rb");
   struct kmb *pkmb1 = createKanMingBan(10, 3, 20);
   parseFileIntoKMB(fptr, pkmb1); 
   fclose(fptr);

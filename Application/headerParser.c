@@ -15,15 +15,14 @@ void parseHeaderToKmb(char** buffer, struct kmb *pkmb1 ) {
   size_t i = 0;
   while(start_doublequote < header_ending_bracket) {
     strncpy(pkmb1->KanMingBan[i][0], start_doublequote+1, task_length);
-    for (int k = 0; k < task_length; ++k) {
-      pkmb1->Header[i][k] = (start_doublequote[k+1]);
-    }
+    strncpy(pkmb1->Header[i], start_doublequote+1, task_length);
     pkmb1->KanMingBan[i][0][task_length] = '\0';
+    pkmb1->Header[i][task_length] = '\0';
     start_doublequote = strchr(end_doublequote + 1, '\"');
     end_doublequote = strchr(start_doublequote + 1, '\"');
     task_length = end_doublequote - start_doublequote - 1;
     i++;
   }
   *buffer = header_ending_bracket;
-  pkmb1->Header[i] = NULL;
+  pkmb1->Header[i]=NULL;
 }
