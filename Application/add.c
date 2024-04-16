@@ -5,6 +5,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+char* strreversechar(char *ptr, char target) {
+    if (ptr == NULL) { 
+        return NULL;
+    }
+
+    ptr--; // Move one position back
+
+    // Search backwards 
+    while (ptr > 0 && *ptr != target) { 
+        ptr--;
+    }
+    // Check if found
+    if (ptr > 0) { 
+        return ptr;
+    } else {
+        return NULL; 
+    }   
+}
 void addTaskFile(char* task, char* header) {
     FILE *fptr = fopen("data/kmb.dat", "rb+");
     if (fptr == NULL) {
@@ -12,8 +30,8 @@ void addTaskFile(char* task, char* header) {
         return;
     }
 
-    char new_str[strlen(task)+1];
-    snprintf(new_str, strlen(task)+1, ",%s", task);
+    char new_str[strlen(task)+5];
+    snprintf(new_str, strlen(task)+5, ",\n\t\t%s", task);
 		task = new_str;
 
     // Determine the size of the file
@@ -40,6 +58,7 @@ void addTaskFile(char* task, char* header) {
 
     // Find the last occurrence of ']'
     lastClosingBracket = strchr(lastHeader, ']');
+    lastClosingBracket = strreversechar(lastClosingBracket, '}')+1;
 
     // Calculate the position to insert the task
     int position = lastClosingBracket - buffer;
@@ -62,7 +81,6 @@ void addTaskFile(char* task, char* header) {
     fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator
     fseek(fptr, 0, SEEK_SET);
 		fflush(fptr);
-
     fclose(fptr);
     free(newBuffer);
     free(buffer);
