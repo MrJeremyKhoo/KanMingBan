@@ -5,10 +5,10 @@ CC = gcc
 CFLAGS = -g
 
 # Source files
-SRCS = Application/dataParser.c Application/errorHandler.c Application/kmbInit.c Application/headerParser.c main.c Presentation/table.c Business/commandParser.c Application/add.c
+SRCS = Application/dataParser.c Application/errorHandler.c Application/kmbInit.c Application/headerParser.c main.c Presentation/table.c Business/commandParser.c Application/add.c Application/delete.c
 
 # Header files
-HDRS = Application/dataParser.h Application/errorHandler.h Application/kmbInit.h Presentation/table.h Business/commandParser.h ApplicationheaderParser.h Application/add.h
+HDRS = Application/dataParser.h Application/errorHandler.h Application/kmbInit.h Presentation/table.h Business/commandParser.h ApplicationheaderParser.h Application/add.h Application/delete.h
 
 # Object files
 OBJS = $(SRCS:.c=.o)

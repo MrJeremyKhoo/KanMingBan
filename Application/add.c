@@ -1,6 +1,7 @@
 #include "dataParser.h"
 #include "errorHandler.h"
 #include "kmbInit.h"
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,9 +31,6 @@ void addTaskFile(char* task, char* header) {
         return;
     }
 
-    char new_str[strlen(task)+5];
-    snprintf(new_str, strlen(task)+5, ",\n\t\t%s", task);
-		task = new_str;
 
     // Determine the size of the file
     fseek(fptr, 0, SEEK_END);
@@ -48,6 +46,8 @@ void addTaskFile(char* task, char* header) {
 
     char *lastHeader = NULL;
     char *lastClosingBracket = NULL;
+    char *lastCurlyClosing = NULL;
+    char *insertion = NULL;
     char *headerTag = NULL;
     char *headerEnd = NULL;
 
@@ -56,12 +56,23 @@ void addTaskFile(char* task, char* header) {
     headerEnd = strchr(headerTag, ']');
     lastHeader = strstr(headerEnd, header);
 
+    char new_str[strlen(task)+5];
+    snprintf(new_str, strlen(task)+5, ",\n\t\t%s", task);
+		task = new_str;
     // Find the last occurrence of ']'
     lastClosingBracket = strchr(lastHeader, ']');
-    lastClosingBracket = strreversechar(lastClosingBracket, '}')+1;
-
+    lastCurlyClosing = strchr(lastHeader, '}');
+    
+    if(lastCurlyClosing > lastClosingBracket) {
+      insertion = lastClosingBracket ;
+      task += 1;
+    } else {
+      insertion = lastCurlyClosing+ 1;
+    }
+    
+    
     // Calculate the position to insert the task
-    int position = lastClosingBracket - buffer;
+    int position =  insertion - buffer;
     // Create new buffer with enough space for the new task and null terminator
     int taskLen = strlen(task);
     int newSize = fileSize + taskLen;
@@ -79,7 +90,6 @@ void addTaskFile(char* task, char* header) {
     // Write the new buffer back to the file
     fseek(fptr, 0, SEEK_SET);
     fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator
-    fseek(fptr, 0, SEEK_SET);
 		fflush(fptr);
     fclose(fptr);
     free(newBuffer);
