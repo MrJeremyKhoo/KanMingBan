@@ -1,11 +1,15 @@
 #include "commandParser.h"
 #include "../Application/add.h"
+#include "../Application/delete.h"
 #include "../Application/dataParser.h"
 #include "../Presentation/table.h"
 
-//todo: implment add task
 void addCommand() {
-  addTaskFile("{\"id\": 4, \"name\": \"this\", \"description\": \"Description for task4\"}", "Todo");
+  addTaskFile("{\"id\": 4, \"name\": \"this\", \"des\": \"Description for task4\"}", "Todo");
+}
+
+void deleteCommand() {
+  deleteTaskFile("id\": 4,");
 }
 
 void command(char c) {
@@ -13,6 +17,9 @@ void command(char c) {
   switch(argChar) {
     case add:
       addCommand();
+      break;
+    case del:
+      deleteCommand();
       break;
     case view:
   }
