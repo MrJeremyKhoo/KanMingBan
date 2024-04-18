@@ -35,13 +35,14 @@ make it fast
 - ~Display data file properly~
 - ~Argument handler~
 - ~Add tasks~
-- tasks have ID and description
-- task ID cache
-- Remove tasks
-- Promote task
+- ~tasks have ID and description~
+- ~Remove tasks~
+- ~Promote task~
 - Regress task
+- Command select by ID
   
 ## RoadMap iteration2:
+- task ID cache
 - Swap task position on board
 - Task lifecycle management
 - Task throughput analysis
