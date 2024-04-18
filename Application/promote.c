@@ -1,5 +1,6 @@
 #include "errorHandler.h"
 #include "add.h"
+#include "headerParser.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,17 +34,20 @@ void promoteTaskFile(char* id) {
 
     //todo: change this to not just be 100 hardcoded
     //findHeader
-    char ** headerArray = malloc(10 * sizeof(char*));
+    char ** headerArray = calloc(10, sizeof(char*));
     //find task's header
-    for(int i = 0; i < 10; i++) {
-      Header[i] = (char*)malloc(1000 * sizeof(char));
+    for(int i = 0; i < 3; i++) {
+      headerArray[i] = (char*)calloc(100, sizeof(char));
     }
-    parseHeaderToArray(buffer, headerArray);
+    parseHeaderToArray(buffer, &headerArray);
     //determine header of id
-    for (int i = 0; Header[i] < 10; ++i) {
-      taskHeader = strstr(buffer, Header[i]);
+    char *header_start = strstr(buffer, "\"HEADER\":");
+    char *header_opening_bracket = strchr(header_start, '[');
+    char *header_ending_bracket = strchr(header_start + 1, ']');
+    for (int i = 0; i < 3; ++i) {
+      taskHeader = strstr(header_ending_bracket, headerArray[i]);
       if (taskHeader > idplace) {
-        promotionHeader = Header[i];
+        promotionHeader = headerArray[i];
         break;
       }
     }
@@ -58,8 +62,10 @@ void promoteTaskFile(char* id) {
     int position = openingClosingBracket - buffer;
     // Create new buffer with enough space for the new task and null terminator
     int taskLen =  lastClosingBracket - openingClosingBracket;
-    char * task = NULL;
-    strcpy(task, strchr(openingClosingBracket,'{'), taskLen);
+    int taskLen2 =  lastClosingBracket - strchr(openingClosingBracket, '{') + 1;
+    char * task = malloc(taskLen2 * sizeof(char));
+    memcpy(task, strchr(openingClosingBracket,'{'), taskLen2);
+    task[taskLen2] = '\0';
     int newSize = fileSize - taskLen;
     char *newBuffer = (char *)malloc(newSize);
 

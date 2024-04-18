@@ -1,9 +1,7 @@
 {
   "HEADER": ["Todo", "In-Progress", "Done"]
 
-  "Todo": [,
-		{"id": 4, "name": "this", "des": "Description for task4"},
-		{"id": 4, "name": "this", "des": "Description for task4"}]
+  "Todo": []
   "In-Progress": [
     {"id": 6, "name": "task6", "description": "Description for task1"}
   ],

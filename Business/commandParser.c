@@ -1,6 +1,7 @@
 #include "commandParser.h"
 #include "../Application/add.h"
 #include "../Application/delete.h"
+#include "../Application/promote.h"
 #include "../Application/dataParser.h"
 #include "../Presentation/table.h"
 
@@ -12,6 +13,11 @@ void deleteCommand() {
   deleteTaskFile("id\": 4,");
 }
 
+void promoteCommand() {
+  promoteTaskFile("id\": 4,");
+}
+
+
 void command(char c) {
   char argChar = c;
   switch(argChar) {
@@ -20,6 +26,9 @@ void command(char c) {
       break;
     case del:
       deleteCommand();
+      break;
+    case promote:
+      promoteCommand();
       break;
     case view:
   }

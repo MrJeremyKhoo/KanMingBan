@@ -16,6 +16,8 @@ enum Command {
   swap = 's',
 
 	view = 'v',
+
+	promote = 'p',
 };
 void command(char c);
 
