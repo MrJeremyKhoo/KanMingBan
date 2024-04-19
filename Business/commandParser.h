@@ -17,10 +17,8 @@ enum Command {
 
 	view = 'v',
 
-	promote = 'p',
+	promote = 'f',
 };
-void command(char c);
-
-void addCommand();
+void command(char c, char* id);
 
 #endif

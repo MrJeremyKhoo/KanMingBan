@@ -9,10 +9,10 @@ int main(int argc, char *argv[]) {
     //table: draw table
     //dataparser: openfile
     if(argc  >  1) {
-      command(*argv[1]);
+      command(*argv[1], argv[2]);
     }
     else {
-      command('v');
+      command('v', "0");
     }
   
     // Print the number of command-line arguments
