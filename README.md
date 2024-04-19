@@ -39,7 +39,10 @@ make it fast
 - ~Remove tasks~
 - ~Promote task~
 - Regress task
-- Command select by ID
+- ~Delete by ID~
+- Promote by ID
+- Regress by ID
+- Add by task name
   
 ## RoadMap iteration2:
 - task ID cache
