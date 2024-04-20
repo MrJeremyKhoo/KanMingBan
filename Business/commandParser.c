@@ -17,13 +17,19 @@ void deleteCommand(char* id) {
     deleteTaskFile(result);
     return;
   }
-  printf("Did not specify which task(ID) to delete");
+  printf("Did not specify which task(ID) to delete\n");
 }
 
-void promoteCommand() {
-  promoteTaskFile("id\": 4,");
+void promoteCommand(char* id) {
+  if (id != NULL) {
+    int length = strlen(id) + 7; // length of "id\": ", the length of v, and the comma
+    char* result = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
+    snprintf(result, length + 1, "id\": %s,", id);
+    promoteTaskFile(result);
+    return;
+  }
+  printf("Did not specify which task(ID) to promote\n");
 }
-
 
 void command(char c, char* id) {
   char argChar = c;
@@ -35,7 +41,7 @@ void command(char c, char* id) {
       deleteCommand(id);
       break;
     case promote:
-      promoteCommand();
+      promoteCommand(id);
       break;
     case view:
   }
