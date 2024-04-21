@@ -38,14 +38,15 @@ make it fast
 - ~tasks have ID and description~
 - ~Remove tasks~
 - ~Promote task~
-- Regress task
+- ~Regress task~
 - ~Delete by ID~
-- Promote by ID
-- Regress by ID
-- Add by task name
+- ~Promote by ID~
+- ~Regress by ID~
+- ~Add by task name~
+- ID cache
+- Recieve from stdin
   
 ## RoadMap iteration2:
-- task ID cache
 - Swap task position on board
 - Task lifecycle management
 - Task throughput analysis
@@ -55,12 +56,6 @@ make it fast
 - Task drilldown
 - Tagging
 - Filtering
-  
-## RoadMap iteration4:
-- Basic GUI support
-  - Windows
-  - macOS
-  - Linux/GNU
 
 
 ## License
