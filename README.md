@@ -30,7 +30,7 @@ make it fast
 ## RoadMap MVP:
 - ~Draw table~
 - ~Read Datafile~
-- ~Store Datafile on heap~ (Decided to parse from JSON, Cross-compatibiliity, faster to parse)
+- ~Store Datafile on heap~ (Decided to parse from JSON, Cross-compatibiliity)
 - ~Parse Datafile (single call, fread to buffer, reduce syscalls if line by line)~
 - ~Display data file properly~
 - ~Argument handler~
