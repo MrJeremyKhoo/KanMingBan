@@ -16,9 +16,9 @@ enum Command {
   swap = 's',
 
 	view = 'v',
-};
-void command(char c);
 
-void addCommand();
+	promote = 'f',
+};
+void command(char c, char* id);
 
 #endif

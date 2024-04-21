@@ -1,7 +1,6 @@
 #include "dataParser.h"
 #include "errorHandler.h"
 #include "kmbInit.h"
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

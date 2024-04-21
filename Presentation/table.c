@@ -4,7 +4,7 @@
 void drawRowBorder(int cellWidth, int columns) {
     printf(" ");
     for (int i = 0; i < columns * (cellWidth + 2) + columns - 1; i++) {
-        printf("-");
+        printf("_");
     }
     printf("\n");
 }
