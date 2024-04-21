@@ -2,6 +2,7 @@
 #include "../Application/add.h"
 #include "../Application/delete.h"
 #include "../Application/promote.h"
+#include "../Application/regress.h"
 #include "../Application/dataParser.h"
 #include "../Presentation/table.h"
 
@@ -10,7 +11,7 @@ void addCommand() {
 }
 
 void deleteCommand(char* id) {
-  if (id != NULL) {
+  if (id != NULL && id != 0x0) {
     int length = strlen(id) + 7; // length of "id\": ", the length of v, and the comma
     char* result = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
     snprintf(result, length + 1, "id\": %s,", id);
@@ -21,7 +22,7 @@ void deleteCommand(char* id) {
 }
 
 void promoteCommand(char* id) {
-  if (id != NULL) {
+  if (id != NULL && id != 0x0) {
     int length = strlen(id) + 7; // length of "id\": ", the length of v, and the comma
     char* result = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
     snprintf(result, length + 1, "id\": %s,", id);
@@ -29,6 +30,17 @@ void promoteCommand(char* id) {
     return;
   }
   printf("Did not specify which task(ID) to promote\n");
+}
+
+void regressCommand(char* id) {
+  if (id != NULL && id != 0x0) {
+    int length = strlen(id) + 7; // length of "id\": ", the length of v, and the comma
+    char* result = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
+    snprintf(result, length + 1, "id\": %s,", id);
+    regressTaskFile(result);
+    return;
+  }
+  printf("Did not specify which task(ID) to regress\n");
 }
 
 void command(char c, char* id) {
@@ -42,6 +54,9 @@ void command(char c, char* id) {
       break;
     case promote:
       promoteCommand(id);
+      break;
+    case regress:
+      regressCommand(id);
       break;
     case view:
   }
