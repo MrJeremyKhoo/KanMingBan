@@ -45,8 +45,10 @@ make it fast
 - ~Add by task name~
 - ID cache
 - Recieve from stdin
+- add task by name
   
 ## RoadMap iteration2:
+- add description to task
 - Swap task position on board
 - Task lifecycle management
 - Task throughput analysis
