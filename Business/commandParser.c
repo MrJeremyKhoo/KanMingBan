@@ -45,7 +45,7 @@ void regressCommand(char* id) {
 }
 
 void swapCommand() {
-  int availID();
+  availID();
 }
 
 void command(char c, char* id) {

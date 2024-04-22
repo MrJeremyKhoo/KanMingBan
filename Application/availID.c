@@ -31,7 +31,7 @@ int availID() {
     char *largestNum= NULL;
     char* endIdChar = NULL;
     long num = 0;
-    int oldLength = 0;
+    long oldLength = 0;
     // Find the first occurrence of the header
     availIDTag = strstr(buffer, "Avai-ID");
     endSquareBracket = strchr(availIDTag, ']');
@@ -41,11 +41,11 @@ int availID() {
   while (*(++startSquareBracket) == ' ' || *startSquareBracket == '\n' || *startSquareBracket == '\r') {}
   //todo: assumption that largestID always have id
   if(isEmpty(startSquareBracket, endSquareBracket)) {
-    availIDTag = strstr(buffer, "Largest-ID:");
+    availIDTag = strstr(buffer, "\"Largest-ID\":")+13;
     endIdChar = strchr(availIDTag, ',');
     while (*(++availIDTag) == ' ' || *availIDTag == '\n' || *availIDTag == '\r') {}
     num = strtol(availIDTag, &endIdChar, 10);
-    int oldlength = snprintf(NULL, 0, "%d", num) + 1;
+    oldLength = snprintf(NULL, 0, "%d", num) + 1;
     num++;    
     int length = snprintf(NULL, 0, "%d", num) + 1;
     char *str = (char *)malloc((length) * sizeof(char));
@@ -57,14 +57,17 @@ int availID() {
     char *newBuffer = (char *)malloc(newSize);
 
     memcpy(newBuffer, buffer, position);
-    memcpy(newBuffer + position, str, length + 1);
-    memcpy(newBuffer + position + length, buffer + commaPosition, fileSize - commaPosition);
+    memcpy(newBuffer + position, str, length);
+    memcpy(newBuffer + position + length - 1, buffer + commaPosition, fileSize - commaPosition );
 
+    fseek(fptr, 0, SEEK_SET);
+    fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator
+    fseek(fptr, 0, SEEK_SET);
 		fflush(fptr);
     fclose(fptr);
     free(newBuffer);
     free(buffer);
-
+  
   } else {
     endIdChar = strchr(availIDTag, ',');
     num = strtol(startSquareBracket, &endIdChar, 10);
@@ -74,8 +77,8 @@ int availID() {
     int newSize = fileSize - length;
     char *newBuffer = (char *)malloc(newSize);
 
-    memcpy(newBuffer, buffer, position);
-    memcpy(newBuffer + position, buffer + position + length, fileSize - position - length);
+    memcpy(newBuffer, buffer, position - length);
+    memcpy(newBuffer + position - length, buffer + position + length, fileSize - position - length);
 
     fseek(fptr, 0, SEEK_SET);
     fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator

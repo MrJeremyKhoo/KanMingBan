@@ -1,16 +1,16 @@
 {
   "HEADER": ["Todo", "In-Progress", "Done"],
 
-  "Avai-ID": [1, 2, 3, 5, 6],
+  "Avai-ID": [5,6],
 
   "Largest-ID": 7,
 
   "Todo": [
-		{"id": 4, "name": "CS3212 Week13", "des": "Description for task4"},
-		{"id": 4, "name": "CS3212 Week12", "des": "Description for task4"},
-		{"id": 4, "name": "HTLK Unit 1 Lesson 2", "des": "Description for task4"}],
+		{"id": 1, "name": "CS3212 Week12", "des": "Description for task4"},
+		{"id": 2, "name": "HTLK Unit 1 Lesson 2", "des": "Description for task4"}],
   "In-Progress": [
-    {"id": 6, "name": "CS4230report", "des": "Description for task1"}],
+    {"id": 3, "name": "CS4230report", "des": "Description for task1"},
+		{"id": 4, "name": "CS3212 Week13", "des": "Description for task4"}],
   "Done": [
     {"id": 7, "name": "task7", "des": "Description for task1"}]
 }
