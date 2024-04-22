@@ -40,7 +40,7 @@ regress task to prev column
 ## RoadMap MVP:
 - ~Draw table~
 - ~Read Datafile~
-- ~Store Datafile on heap~ (Decided to parse from JSON, Cross-compatibiliity)
+- ~Store Datafile on heap~ (Decided to parse from JSON-esq, Cross-compatibiliity)
 - ~Parse Datafile (single call, fread to buffer, reduce syscalls if line by line)~
 - ~Display data file properly~
 - ~Argument handler~
@@ -57,6 +57,7 @@ regress task to prev column
 - Add availiable ID (for deletion)
 - add task by name
 - Recieve from stdin
+- Testing
   
 ## RoadMap iteration2:
 - add description to task
