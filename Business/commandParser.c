@@ -4,6 +4,7 @@
 #include "../Application/promote.h"
 #include "../Application/regress.h"
 #include "../Application/dataParser.h"
+#include "../Application/availID.h"
 #include "../Presentation/table.h"
 
 void addCommand() {
@@ -43,6 +44,10 @@ void regressCommand(char* id) {
   printf("Did not specify which task(ID) to regress\n");
 }
 
+void swapCommand() {
+  availID();
+}
+
 void command(char c, char* id) {
   char argChar = c;
   switch(argChar) {
@@ -57,6 +62,9 @@ void command(char c, char* id) {
       break;
     case regress:
       regressCommand(id);
+      break;
+    case swap:
+      swapCommand();
       break;
     case view:
   }

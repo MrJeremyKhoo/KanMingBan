@@ -77,7 +77,7 @@ void parseFileIntoKMB(FILE *fptr, struct kmb *pkmb1) {
 
 struct kmb openFile() {
   FILE *fptr = fopen("data/kmb.dat", "rb");
-  struct kmb *pkmb1 = createKanMingBan(10, 3, 20);
+  struct kmb *pkmb1 = createKanMingBan(100, 3, 20);
   parseFileIntoKMB(fptr, pkmb1); 
   fclose(fptr);
   return *pkmb1;
