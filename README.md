@@ -1,5 +1,5 @@
 # Personal Kanban Board (KanMingBan)
-NOT VIABLE FOR USE - MANY BUGS
+NOT VIABLE FOR USE - MANY BUGS - WORKING ON IT
 ## Introduction
 
 KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to provide a simple and lightweight solution for managing tasks without relying on heavy dependencies or external services. The name "KanMingBan" is derived from "看命板" which translates to "Life Lookup board" in Chinese.
