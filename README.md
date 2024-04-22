@@ -14,7 +14,7 @@ Not written in C++/Java because there is no need for their abstract data types, 
 
 Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application
 
-##Install
+## Install
 build from source. 
 ```
 make
