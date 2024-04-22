@@ -1,14 +1,10 @@
 # Personal Kanban Board (KanMingBan)
-
+NOT VIABLE FOR USE - MANY BUGS
 ## Introduction
 
 KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to provide a simple and lightweight solution for managing tasks without relying on heavy dependencies or external services. The name "KanMingBan" is derived from "看命板" which translates to "Life Lookup board" in Chinese.
 
 ## Motivation
-
-The motivation behind KanMingBan was the lack of lightweight CLI-based Kanban board solutions. Existing alternatives either had limited features, heavy dependencies (they tend to be toy projects), or were tightly integrated with other tools like text editors or cloud services (enterprise level)
-
-Existing webbased tools also do not embody actual KanBan. Throughput, cycle time, Lead time and work in progress should be measured, if they are measured they are usually for enterprise and not personal use.
 
 currently it is written in C so that future extentions do not get bogged down by the language choice. There is also no reason for just-in-time compilation for CRUD logic.
 
@@ -18,14 +14,28 @@ Not written in C++/Java because there is no need for their abstract data types, 
 
 Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application
 
-## Philosophy
-
-KanMingBan should be a portable personal Kanban boards. Should be as quick and self-contained as a kanban board itself.
-
-keep it simple and lightweight
-make it fast
-(A CRUD app should not take more a tenth of a second to load/interface with.)
-
+##Install
+build from source. 
+```
+make
+```
+## How to use
+add task:
+```
+<executable> a "task1" 
+```
+delete:
+```
+<executable> d [task ID]
+```
+forward task to next column
+```
+<executable> f [task ID]
+```
+regress task to prev column
+```
+<executable> r [task ID]
+```
 
 ## RoadMap MVP:
 - ~Draw table~
