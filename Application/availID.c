@@ -70,9 +70,14 @@ int availID() {
   
   } else {
     endIdChar = strchr(availIDTag, ',');
+
     num = strtol(startSquareBracket, &endIdChar, 10);
     int length = snprintf(NULL, 0, "%d", num);
      
+    if (endIdChar > endSquareBracket) {
+      endIdchar -= 1;
+    }
+
     int position =  endIdChar - buffer;
     int newSize = fileSize - length;
     char *newBuffer = (char *)malloc(newSize);
