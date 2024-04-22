@@ -43,9 +43,10 @@ make it fast
 - ~Promote by ID~
 - ~Regress by ID~
 - ~Add by task name~
-- ID cache
-- Recieve from stdin
+- ~Remove from available ID~
+- Add availiable ID (for deletion)
 - add task by name
+- Recieve from stdin
   
 ## RoadMap iteration2:
 - add description to task
