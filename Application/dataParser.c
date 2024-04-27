@@ -15,12 +15,15 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     char *header_start = strstr(buffer, pkmb1->Header[i]);
     char *array_opening_bracket = strchr(header_start, '[');
     char *array_ending_bracket = strchr(header_start, ']');
-    char *name_start_doublequote = strstr(array_opening_bracket, "name\": \"")+8; //8 is number of charc till actual name
-    char *id_start = strstr(array_opening_bracket, "id\": ")+5;
-    char *id_end = strchr(id_start, ',');
+    //check if column empty
+    //todo:re write this
+    char *name_start_doublequote = strstr(array_opening_bracket, "name\": \""); //8 is number of charc till actual name
     if(name_start_doublequote == NULL) {
       break;
     } //last header no file
+    name_start_doublequote += 8;
+    char *id_start = strstr(array_opening_bracket, "id\": ")+5;
+    char *id_end = strchr(id_start, ',');
     char *name_end_doublequote = strchr(name_start_doublequote, '\"');
     int task_length = name_end_doublequote - name_start_doublequote;
     int id_length = id_end - id_start;

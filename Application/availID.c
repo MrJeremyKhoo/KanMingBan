@@ -69,21 +69,16 @@ int availID() {
     free(buffer);
   
   } else {
-    endIdChar = strchr(availIDTag, ',');
 
     num = strtol(startSquareBracket, &endIdChar, 10);
     int length = snprintf(NULL, 0, "%d", num);
      
-    if (endIdChar > endSquareBracket) {
-      endIdChar -= 1;
-    }
-
     int position =  endIdChar - buffer;
     int newSize = fileSize - length;
     char *newBuffer = (char *)malloc(newSize);
-
+    int hasComma = (endIdChar != endSquareBracket);
     memcpy(newBuffer, buffer, position - length);
-    memcpy(newBuffer + position - length, buffer + position + length, fileSize - position - length);
+    memcpy(newBuffer + position - length, buffer + position + hasComma, fileSize - position - length);
 
     fseek(fptr, 0, SEEK_SET);
     fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator

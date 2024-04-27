@@ -5,6 +5,7 @@
 #include "../Application/regress.h"
 #include "../Application/dataParser.h"
 #include "../Application/availID.h"
+#include "../Application/makeAvailID.h"
 #include "../Application/taskString.h"
 #include "../Presentation/table.h"
 
@@ -19,6 +20,7 @@ void deleteCommand(char* id) {
     char* result = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
     snprintf(result, length + 1, "id\": %s,", id);
     deleteTaskFile(result);
+    makeAvailID(atoi(id));
     return;
   }
   printf("Did not specify which task(ID) to delete\n");
@@ -47,7 +49,7 @@ void regressCommand(char* id) {
 }
 
 void swapCommand() {
-  printf(taskStr(1, "testtastk"));
+  makeAvailID(3);
 }
 
 void command(char c, char* arg1) {
