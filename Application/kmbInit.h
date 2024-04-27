@@ -10,7 +10,6 @@ typedef char*** ARRAY_OF_STRARRAY;
 struct kmb {
   ARRAY_OF_STRARRAY KanMingBan;
   char** Header;
-  char** Tasks;
   int column;
   int row;
 };
