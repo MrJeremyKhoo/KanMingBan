@@ -57,8 +57,7 @@ regress task to prev column
 - ~Add availiable ID (for deletion)~
 - ~add task by name~
 - ~Recieve from stdin~
-- Testing
-  DONE
+- Testing and refactoring
 ## RoadMap iteration2:
 - add description to task
 - Swap task position on board
