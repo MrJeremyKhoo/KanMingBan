@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     command(*argv[1], 0x0);
   }
   
-    // Print the number of command-line arguments
+  // Print the number of command-line arguments
     printf("Number of arguments: %d\n", argc);
 
     // Print each command-line argument

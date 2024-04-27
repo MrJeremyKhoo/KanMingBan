@@ -9,9 +9,7 @@ char* strreversechar(char *ptr, char target) {
     if (ptr == NULL) { 
         return NULL;
     }
-
     ptr--; // Move one position back
-
     // Search backwards 
     while (ptr > 0 && *ptr != target) { 
         ptr--;
@@ -23,13 +21,13 @@ char* strreversechar(char *ptr, char target) {
         return NULL; 
     }   
 }
+
 void addTaskFile(char* task, char* header) {
     FILE *fptr = fopen("data/kmb.dat", "rb+");
     if (fptr == NULL) {
         perror("Error opening file");
         return;
     }
-
 
     // Determine the size of the file
     fseek(fptr, 0, SEEK_END);

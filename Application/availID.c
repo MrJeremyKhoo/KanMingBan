@@ -75,7 +75,7 @@ int availID() {
     int length = snprintf(NULL, 0, "%d", num);
      
     if (endIdChar > endSquareBracket) {
-      endIdchar -= 1;
+      endIdChar -= 1;
     }
 
     int position =  endIdChar - buffer;

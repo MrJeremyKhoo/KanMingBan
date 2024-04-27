@@ -27,16 +27,17 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
 
     size_t j = 1;
     while(name_start_doublequote < array_ending_bracket) {
-      char *id = malloc(id_length);
-      char *task = malloc(task_length);
+      char *id = malloc(id_length * sizeof(char));
+      char *task = malloc(task_length * sizeof(char));
       strncpy(id, id_start, id_length);
       strncpy(task, name_start_doublequote, task_length);
       id[id_length] = '\0';
       task[task_length+1] = '\0';
-      char* string = malloc(id_length + task_length+3);
+      char* string = malloc((id_length + task_length+3) * sizeof(char));
+      int stringSize = id_length + task_length+3;
       snprintf(string, id_length + task_length + 4, "[%s] %s", id, task);
-      strncpy(pkmb1->KanMingBan[i][j], string, sizeof(string)+1);
-      pkmb1->KanMingBan[i][j][sizeof(string)+1] = '\0';
+      strncpy(pkmb1->KanMingBan[i][j], string, stringSize+1);
+      pkmb1->KanMingBan[i][j][stringSize+1] = '\0';
       name_start_doublequote = strstr(name_end_doublequote + 1, "name\": \"");
       if(name_start_doublequote == NULL) {
         j++;
