@@ -5,10 +5,13 @@
 #include "../Application/regress.h"
 #include "../Application/dataParser.h"
 #include "../Application/availID.h"
+#include "../Application/makeAvailID.h"
+#include "../Application/taskString.h"
 #include "../Presentation/table.h"
 
-void addCommand() {
-  addTaskFile("{\"id\": 4, \"name\": \"this\", \"des\": \"Description for task4\"}", "Todo");
+void addCommand(char* str) {
+  int availId = availID();
+  addTaskFile(taskStr(availId,str), "Todo");
 }
 
 void deleteCommand(char* id) {
@@ -17,6 +20,7 @@ void deleteCommand(char* id) {
     char* result = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
     snprintf(result, length + 1, "id\": %s,", id);
     deleteTaskFile(result);
+    makeAvailID(atoi(id));
     return;
   }
   printf("Did not specify which task(ID) to delete\n");
@@ -45,29 +49,30 @@ void regressCommand(char* id) {
 }
 
 void swapCommand() {
-  availID();
+  makeAvailID(3);
 }
 
-void command(char c, char* id) {
+void command(char c, char* arg1) {
   char argChar = c;
   switch(argChar) {
     case add:
-      addCommand();
+      addCommand(arg1);
       break;
     case del:
-      deleteCommand(id);
+      deleteCommand(arg1);
       break;
     case promote:
-      promoteCommand(id);
+      promoteCommand(arg1);
       break;
     case regress:
-      regressCommand(id);
+      regressCommand(arg1);
       break;
     case swap:
       swapCommand();
       break;
     case view:
   }
-  drawTable(15, openFile());
+  //todo: cannot be fixed value for column width
+  drawTable(20, openFile());
 
 }

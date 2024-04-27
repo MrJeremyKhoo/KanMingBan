@@ -44,12 +44,16 @@ void promoteTaskFile(char* id) {
     char *header_start = strstr(buffer, "\"HEADER\":");
     char *header_opening_bracket = strchr(header_start, '[');
     char *header_ending_bracket = strchr(header_start + 1, ']');
+  //todo:add more headers
     for (int i = 0; i < 3; ++i) {
       taskHeader = strstr(header_ending_bracket, headerArray[i]);
       if (taskHeader > idplace) {
         promotionHeader = headerArray[i];
         break;
       }
+    }
+    if(promotionHeader == NULL) {
+      return;
     }
     //delete task
     char* openingClosingBracket = strreversechar(idplace, ',');
@@ -71,7 +75,7 @@ void promoteTaskFile(char* id) {
 
     // Copy the original content up to the insertion point
     memcpy(newBuffer, buffer, position);
-
+    
     // Copy the rest of the original content
     memcpy(newBuffer + position, buffer + position + taskLen + 1, fileSize - position - taskLen);
 

@@ -46,13 +46,23 @@ void regressTaskFile(char* id) {
     char *header_opening_bracket = strchr(header_start, '[');
     char *header_ending_bracket = strchr(header_start + 1, ']');
     for (int i = 0; headerArray[i] != NULL; ++i) {
+      if (headerArray[i+1] == NULL) {
+        promotionHeader = headerArray[i-1];
+      }
       taskHeader = strstr(header_ending_bracket, headerArray[i]);
       if (taskHeader > idplace) {
+        if(i - 2 < 0) {
+          promotionHeader = NULL;
+          break;
+        }
         promotionHeader = headerArray[i-2];
-        printf(promotionHeader);
         break;
       }
     }
+    if (promotionHeader == NULL) {
+    return;
+    }
+    //delete task
     //delete task
     char* openingClosingBracket = strreversechar(idplace, ',');
     char* firstSquareBracket = strreversechar(idplace, '[');

@@ -15,28 +15,32 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     char *header_start = strstr(buffer, pkmb1->Header[i]);
     char *array_opening_bracket = strchr(header_start, '[');
     char *array_ending_bracket = strchr(header_start, ']');
-    char *name_start_doublequote = strstr(array_opening_bracket, "name\": \"")+8; //8 is number of charc till actual name
-    char *id_start = strstr(array_opening_bracket, "id\": ")+5;
-    char *id_end = strchr(id_start, ',');
+    //check if column empty
+    //todo:re write this
+    char *name_start_doublequote = strstr(array_opening_bracket, "name\": \""); //8 is number of charc till actual name
     if(name_start_doublequote == NULL) {
       break;
     } //last header no file
+    name_start_doublequote += 8;
+    char *id_start = strstr(array_opening_bracket, "id\": ")+5;
+    char *id_end = strchr(id_start, ',');
     char *name_end_doublequote = strchr(name_start_doublequote, '\"');
     int task_length = name_end_doublequote - name_start_doublequote;
     int id_length = id_end - id_start;
 
     size_t j = 1;
     while(name_start_doublequote < array_ending_bracket) {
-      char *id = malloc(id_length);
-      char *task = malloc(task_length);
+      char *id = malloc(id_length * sizeof(char));
+      char *task = malloc(task_length * sizeof(char));
       strncpy(id, id_start, id_length);
       strncpy(task, name_start_doublequote, task_length);
       id[id_length] = '\0';
       task[task_length+1] = '\0';
-      char* string = malloc(id_length + task_length+3);
+      char* string = malloc((id_length + task_length+3) * sizeof(char));
+      int stringSize = id_length + task_length+3;
       snprintf(string, id_length + task_length + 4, "[%s] %s", id, task);
-      strncpy(pkmb1->KanMingBan[i][j], string, sizeof(string)+1);
-      pkmb1->KanMingBan[i][j][sizeof(string)+1] = '\0';
+      strncpy(pkmb1->KanMingBan[i][j], string, stringSize+1);
+      pkmb1->KanMingBan[i][j][stringSize+1] = '\0';
       name_start_doublequote = strstr(name_end_doublequote + 1, "name\": \"");
       if(name_start_doublequote == NULL) {
         j++;
