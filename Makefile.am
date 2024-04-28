@@ -1,7 +1,7 @@
 # Set the name of the executable
 bin_PROGRAMS = kmb
 
-# Define the source files
+# Define the source files here
 kmb_SOURCES = \
     Application/dataParser.c \
     Application/errorHandler.c \

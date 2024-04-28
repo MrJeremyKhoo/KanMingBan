@@ -1,3 +1,30 @@
 *.out
 myprogram
 a
+compile 
+config.h
+config.h.in
+configure
+config.status
+config.log
+aclocal.m4
+depcomp
+install-sh
+Makefile
+Makefile.in 
+missing 
+stamp-h1 
+*.o
+**/.dirstamp/
+**/.deps/
+Business/.dirstamp/
+Presentation/.dirstamp/
+# Ignore deleted files
+Application/*.o
+Business/*.o
+Presentation/*.o
+kmb
+# Ignore untracked files
+Application/.dirstamp
+Business/.dirstamp
+Presentation/.dirstamp
