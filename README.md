@@ -59,6 +59,12 @@ regress task to prev column
 ```
 <executable> r [task ID]
 ```
+### Tips:
+you can add the following to bashrc so that the board opens every time you spawn a window
+```
+kmb
+```
+you can use grep, awk, less and other GNU utils to manipulate the output
 
 ## RoadMap MVP:
 - ~Draw table~
