@@ -23,14 +23,14 @@ Not in Golang because of performance, there is no need for bounds checking and g
 2. **Extract the Tarball**:
    - Use `tar` to extract the contents of the tarball. For example:
      ```bash
-     tar -xzvf <kmb>.tar.gz
+     tar -xzvf <kmb-verx.x>.tar.gz
      ```
    - This command will extract the contents of the tarball into a directory.
 
 3. **Navigate to the Extracted Directory**:
    - Use `cd` to navigate into the directory where the contents were extracted. For example:
      ```bash
-     cd software
+     cd KanMingBan
      ```
 4. **Install the Software**:
    - Use `make install` to install the compiled software. This step usually requires superuser privileges (root). For example:
