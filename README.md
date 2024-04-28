@@ -33,10 +33,9 @@ Not in Golang because of performance, there is no need for bounds checking and g
      ```
 4. **Install the Software**:
    - Use `make install` to install the compiled software. This step usually requires superuser privileges (root). For example:
-     ``bash
-     ./configure
+
      ```bash
-     sudo make install
+     ./configure; sudo make install
      
 ## How to use
 add task:
