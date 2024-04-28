@@ -79,6 +79,13 @@ kmb
 - you can use grep, awk, less and other GNU utils to manipulate the output
 
 - if you like to dedicate a Tmux instance to the board, I'd suggest you set a bash function to clear the terminal before running the command
+ ```
+  a() {
+  clear
+  kmb $1 $2
+}
+a
+```
 
 ## RoadMap MVP:
 - ~Draw table~
