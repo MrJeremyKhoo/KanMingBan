@@ -20,7 +20,7 @@ Not in Golang, there is no need for bounds checking and garbage collection for a
 Not written in C++/Java because there is no need for their abstract data types, there is essentially only one type data structure
 - There is a C++/Qt kanban [here](https://github.com/StefanoLusardi/Kanban)
 
-Out of all of them, mine is the smallest and fastest.
+Out of all of them, this is the smallest and fastest.
 ## Install
 
 1. **Download the Tarball**: Download the `tar.gz` file from relese tab
