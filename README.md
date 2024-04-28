@@ -4,6 +4,7 @@
 KanMingBan is a CLI-based Personal Kanban Board. It aims to provide a simple and lightweight solution for managing tasks. 
 The name "KanMingBan" is derived from "看命板".
 
+![image](https://github.com/MrJeremyKhoo/KanMingBan/assets/73585045/089f602b-01af-4618-b9b7-a5697789fd04)
 ## Motivation
 
 Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte
