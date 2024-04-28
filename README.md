@@ -45,21 +45,25 @@ Not written in C++/Java because there is no need for their abstract data types, 
      ./configure; sudo make uninstall
      
 ## How to use
+view board:
+```
+kmb
+```
 add task:
 ```
-<executable> a "task1" 
+kmb a "task1" 
 ```
 delete:
 ```
-<executable> d [task ID]
+kmb d [task ID]
 ```
 forward task to next column
 ```
-<executable> f [task ID]
+kmb f [task ID]
 ```
 regress task to prev column
 ```
-<executable> r [task ID]
+kmb r [task ID]
 ```
 ### Tips:
 you can add the following to bashrc so that the board opens every time you spawn a window, you can also add an alias in bashrc. i like to use the letter 'a' because all the crud commands are near to it.
