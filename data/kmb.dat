@@ -1,14 +1,14 @@
 {
   "HEADER": ["Todo", "In-Progress", "Done"],
 
-  "Avai-ID":[3],
+  "Avai-ID":[],
 
   "Largest-ID": 4,
 
   "Todo": [
 		{"id": 1, "name": "3212(2ndhalf)", "des": "Description for task4"},
-		{"id": 4, "name": "3212(1sthalf)", "des": "Description for task4"}]
-  "In-Progress": [,
-		{"id": 2, "name": "HTLK U1L2", "des": "Description for task4"}],
+		{"id": 4, "name": "HTLKL1U3", "des": "Description for task4"},
+		{"id": 2, "name": "3212(1sthalf)", "des": "Description for task4"}],
+  "In-Progress": [
+		{"id": 3, "name": "HTLKL1U2", "des": "Description for task4"}],
   "Done": []
-}
