@@ -19,7 +19,6 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     //todo:re write this
     char *name_start_doublequote = strstr(array_opening_bracket, "name\": \""); //8 is number of charc till actual name
     if(name_start_doublequote == NULL) {
-      i++;
       break;
     } //last header no file
     name_start_doublequote += 8;
@@ -61,7 +60,6 @@ void parseTaskToKmb (char* buffer, struct kmb *pkmb1 ) {
     if (j>max_j) {max_j = j;}
     i++;
   };
-  pkmb1->column = i;
   pkmb1->row = max_j;
 }
 

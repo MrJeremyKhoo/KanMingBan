@@ -1,5 +1,6 @@
 #include "errorHandler.h"
 #include "add.h"
+#include "delete.h"
 #include "headerParser.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,7 +64,6 @@ void regressTaskFile(char* id) {
     return;
     }
     //delete task
-    //delete task
     char* openingClosingBracket = strreversechar(idplace, ',');
     char* firstSquareBracket = strreversechar(idplace, '[');
     if(openingClosingBracket < firstSquareBracket) {
@@ -78,24 +78,7 @@ void regressTaskFile(char* id) {
     char * task = malloc(taskLen2 * sizeof(char));
     memcpy(task, strchr(openingClosingBracket,'{'), taskLen2);
     task[taskLen2] = '\0';
-    int newSize = fileSize - taskLen;
-    char *newBuffer = (char *)malloc(newSize);
-
-    // Copy the original content up to the insertion point
-    memcpy(newBuffer, buffer, position);
-
-    // Copy the rest of the original content
-    memcpy(newBuffer + position, buffer + position + taskLen + 1, fileSize - position - taskLen);
-
-    // Write the new buffer back to the file
-    fseek(fptr, 0, SEEK_SET);
-    fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator
-    fseek(fptr, 0, SEEK_SET);
-		fflush(fptr);
-    fclose(fptr);
-    truncate("data/kmb.dat", newSize - 1);
-    free(newBuffer);
-    free(buffer);
+    deleteTaskFile(id);
     addTaskFile(task, promotionHeader);
 	return;
 }

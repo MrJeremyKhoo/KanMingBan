@@ -43,6 +43,7 @@ void addTaskFile(char* task, char* header) {
 
     char *lastHeader = NULL;
     char *lastClosingBracket = NULL;
+    char *openingBracket = NULL;
     char *lastCurlyClosing = NULL;
     char *insertion = NULL;
     char *headerTag = NULL;
@@ -58,9 +59,11 @@ void addTaskFile(char* task, char* header) {
 		task = new_str;
     // Find the last occurrence of ']'
     lastClosingBracket = strchr(lastHeader, ']');
+    openingBracket = strchr(lastHeader, '[');
     lastCurlyClosing = strchr(lastHeader, '}');
     
-    if(lastCurlyClosing > lastClosingBracket) {
+    while (*(++openingBracket) == ' ' || *openingBracket == '\n' || *openingBracket == '\r') {}
+    if(openingBracket == lastClosingBracket) {
       insertion = lastClosingBracket ;
       task += 1;
     } else {

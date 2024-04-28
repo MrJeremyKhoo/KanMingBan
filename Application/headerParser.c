@@ -24,7 +24,8 @@ void parseHeaderToKmb(char** buffer, struct kmb *pkmb1 ) {
     i++;
   }
   *buffer = header_ending_bracket;
-  pkmb1->Header[i]=NULL;
+  pkmb1->Header[i] = NULL;
+  pkmb1->column = i;
 }
 
 void parseHeaderToArray(char* buffer, char*** array ) {
