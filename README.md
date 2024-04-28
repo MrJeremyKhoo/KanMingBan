@@ -5,11 +5,11 @@ KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to pr
 
 ## Motivation
 
-currently it is written in C so that future extentions do not get bogged down by the language choice. There is also no reason for just-in-time compilation for CRUD logic.
+Currently it is written in C only using gcc libraries (binary is only 80kilo bytes)
 
 Not written in Rust because there should be no need for strict memory safety. essentially there is one data structure and one user
 
-Not written in C++/Java because there is no need for their abstract data types, there is only one data structure
+Not written in C++/Java because there is no need for their abstract data types, there is essentially only one data structure
 
 Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application
 
@@ -80,18 +80,21 @@ regress task to prev column
 - ~Add availiable ID (for deletion)~
 - ~add task by name~
 - ~Recieve from stdin~
-- Testing and refactoring
 ## RoadMap iteration2:
-- add description to task
-- Swap task position on board
+- code quality refactor
+- code performance refactor
+- Memory leakfix
+- drilldown description to task
+- Add task in proper order
 - Task lifecycle management
 - Task throughput analysis
+- Add more multiple columns
 
 ## RoadMap iteration3:
+- Add multiple boards
 - Edit task names
-- Task drilldown
-- Tagging
-- Filtering
+- edit description
+
 
 
 ## License
