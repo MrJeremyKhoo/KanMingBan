@@ -1,4 +1,5 @@
 #include "dataParser.h"
+#include "../global.h"
 #include "errorHandler.h"
 #include "kmbInit.h"
 #include <stdio.h>
@@ -23,7 +24,9 @@ char* strreversechar(char *ptr, char target) {
 }
 
 void addTaskFile(char* task, char* header) {
-    FILE *fptr = fopen("data/kmb.dat", "rb+");
+    char filename[256]; // Adjust the size as per your needs
+    snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
+    FILE *fptr = fopen(filename, "rb+");
     if (fptr == NULL) {
         perror("Error opening file");
         return;

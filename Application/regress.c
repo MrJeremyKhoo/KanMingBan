@@ -1,5 +1,6 @@
 #include "errorHandler.h"
 #include "add.h"
+#include "../global.h"
 #include "delete.h"
 #include "headerParser.h"
 #include <stdio.h>
@@ -8,7 +9,9 @@
 #include <unistd.h>
 
 void regressTaskFile(char* id) {
-    FILE *fptr = fopen("data/kmb.dat", "rb+");
+    char filename[256]; // Adjust the size as per your needs
+    snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
+    FILE *fptr = fopen(filename, "rb+");
     if (fptr == NULL) {
         perror("Error opening file");
         return;

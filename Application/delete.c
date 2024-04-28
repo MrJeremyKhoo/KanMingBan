@@ -1,12 +1,15 @@
 #include "errorHandler.h"
 #include "add.h"
+#include "../global.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
 void deleteTaskFile(char* id) {
-    FILE *fptr = fopen("data/kmb.dat", "rb+");
+    char filename[256]; // Adjust the size as per your needs
+    snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
+    FILE *fptr = fopen(filename, "rb+");
     if (fptr == NULL) {
         perror("Error opening file");
         return;
@@ -54,7 +57,7 @@ void deleteTaskFile(char* id) {
     fseek(fptr, 0, SEEK_SET);
 		fflush(fptr);
     fclose(fptr);
-    truncate("data/kmb.dat", newSize - 1);
+    truncate(filename, newSize - 1);
     free(newBuffer);
     free(buffer);
 	return;

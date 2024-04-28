@@ -22,10 +22,8 @@ AM_CFLAGS = -Wall -Wextra
 
 AUTOMAKE_OPTIONS = subdir-objects
 # Specify the data file to be included in the distribution tarball
-DISTFILES = data/kmb.dat
-
 
 # Specify where the data file should be installed
 install-data-local:
-	@mkdir -p $(DESTDIR)$(bindir)/data
-	$(INSTALL_DATA) $(srcdir)/data/kmb.dat $(DESTDIR)$(bindir)/data/
+	$(INSTALL_DATA) $(srcdir)/data/kmb.dat $(DESTDIR)$(HOME)
+	@mv $(DESTDIR)$(HOME)/kmb.dat $(DESTDIR)$(HOME)/.kmb.dat
