@@ -29,7 +29,7 @@ Not in Golang because of performance, there is no need for bounds checking and g
 3. **Navigate to the Extracted Directory**:
    - Use `cd` to navigate into the directory where the contents were extracted. For example:
      ```bash
-     cd KanMingBan
+     cd <dir>
      ```
 4. **Install the Software**:
    - Use `make install` to install the compiled software. This step usually requires superuser privileges (root). For example:
