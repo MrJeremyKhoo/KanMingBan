@@ -1,21 +1,26 @@
 # Personal CLI KanBan
 ## Introduction
 
-KanMingBan is a CLI-based Personal Kanban Board. It aims to provide a simple and lightweight solution for managing tasks. 
+KanMingBan is a CLI-based Personal Kanban Board. It aims to provide a simple and lightweight solution for managing tasks.
 The name "KanMingBan" is derived from "看命板".
 
 ![image](https://github.com/MrJeremyKhoo/KanMingBan/assets/73585045/089f602b-01af-4618-b9b7-a5697789fd04)
 ## Motivation
 
-Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte
+Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte.
+
+It prints to stdout, there is really no need for a GUI for a todo list app. If you want a TUI/GUI below are some options in other languages that I did not choose to write this in.
 
 Not written in Rust because there should be no need for strict memory safety. Essentially there is one data structure and one user
+ - There is a rust kanban [here](https://lib.rs/crates/rust-kanban)
 
 Not in Golang, there is no need for bounds checking and garbage collection for a simple application
-
+- There is a Go kanban [here](https://github.com/singalhimanshu/taskgo)
+  
 Not written in C++/Java because there is no need for their abstract data types, there is essentially only one type data structure
+- There is a C++/Qt kanban [here](https://github.com/StefanoLusardi/Kanban)
 
-
+Out of all of them, mine is the smallest and fastest.
 ## Install
 
 1. **Download the Tarball**: Download the `tar.gz` file from relese tab
