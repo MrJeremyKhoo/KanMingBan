@@ -9,7 +9,7 @@ The name "KanMingBan" is derived from "看命板".
 
 Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte.
 
-It prints to stdout, there is really no need for a GUI for a todo list app. If you want a TUI/GUI below are some options in other languages that I did not choose to write this in.
+It prints to stdout, there is really no need for a GUI for a todo list app. If you want a TUI/GUI below are some options.
 
 Not written in Rust because there should be no need for strict memory safety. Essentially there is one data structure and one user
  - There is a rust kanban [here](https://lib.rs/crates/rust-kanban)
