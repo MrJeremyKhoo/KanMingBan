@@ -71,12 +71,14 @@ regress task to prev column
 kmb r [task ID]
 ```
 ### Tips:
-you can add the following to bashrc so that the board opens every time you spawn a window, you can also add an alias in bashrc. i like to use the letter 'a' because all the commands are near 'a' on the keyboard
+- you can add the following to bashrc so that the board opens every time you spawn a window, you can also add an alias in bashrc. i like to use the letter 'a' because all the commands are near 'a' on the keyboard
 ```
 alias a='kmb'
 kmb
 ```
-you can use grep, awk, less and other GNU utils to manipulate the output
+- you can use grep, awk, less and other GNU utils to manipulate the output
+
+- if you like to dedicate a Tmux instance to the board, I'd suggest you set a bash function to clear the terminal before running the command
 
 ## RoadMap MVP:
 - ~Draw table~
