@@ -15,10 +15,43 @@ Not written in C++/Java because there is no need for their abstract data types, 
 Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application
 
 ## Install
-build from source. 
-```
-make
-```
+## Installing a Tarball (.tar.gz) on Linux
+
+1. **Download the Tarball**: Download the `tar.gz` file from release
+
+
+2. **Extract the Tarball**:
+   - Use `tar` to extract the contents of the tarball. For example:
+     ```bash
+     tar -xzvf software.tar.gz
+     ```
+   - This command will extract the contents of the tarball into a directory.
+
+3. **Navigate to the Extracted Directory**:
+   - Use `cd` to navigate into the directory where the contents were extracted. For example:
+     ```bash
+     cd software
+     ```
+
+4. **Read Installation Instructions (if available)**:
+   - Look for a README or INSTALL file in the extracted directory. It might contain specific instructions for installation.
+
+5. **Configure the Software (if necessary)**:
+   - Some software requires configuration before installation. Typically, this involves running a script named `configure`. For example:
+     ```bash
+     ./configure
+     ```
+
+6. **Compile the Software**:
+   - Use `make` to compile the software. For example:
+     ```bash
+     make
+     ```
+
+7. **Install the Software**:
+   - Use `make install` to install the compiled software. This step usually requires superuser privileges (root). For example:
+     ```bash
+     sudo make install
 ## How to use
 add task:
 ```
