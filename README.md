@@ -36,6 +36,11 @@ Not in Golang because of performance, there is no need for bounds checking and g
 
      ```bash
      ./configure; sudo make install
+5. **Uninstall the Software**:
+   - Use `make uninstall` to uninstall the compiled software. This step usually requires superuser privileges (root). For example:
+
+     ```bash
+     ./configure; sudo make uninstall
      
 ## How to use
 add task:
