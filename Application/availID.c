@@ -1,5 +1,6 @@
 #include "availID.h"
 #include "errorHandler.h"
+#include "../global.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -11,7 +12,9 @@ bool isEmpty(char *startSquareBracket, char *endSquareBracket) {
 }
 
 int availID() {
-    FILE *fptr = fopen("data/kmb.dat", "r+");
+    char filename[256]; // Adjust the size as per your needs
+    snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
+    FILE *fptr = fopen(filename, "r+");
 
     // Determine the size of the file
     fseek(fptr, 0, SEEK_END);

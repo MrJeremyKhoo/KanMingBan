@@ -2,6 +2,7 @@
 #include "add.h"
 #include "headerParser.h"
 #include "errorHandler.h"
+#include "../global.h"
 #include "kmbInit.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -79,9 +80,10 @@ void parseFileIntoKMB(FILE *fptr, struct kmb *pkmb1) {
 }
 
 struct kmb openFile() {
-  FILE *fptr = fopen("data/kmb.dat", "rb");
+  char filename[256]; // Adjust the size as per your needs
+  snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
+  FILE *fptr = fopen(filename, "rb");
   struct kmb *pkmb1 = createKanMingBan(100, 3, 20);
   parseFileIntoKMB(fptr, pkmb1); 
-  fclose(fptr);
   return *pkmb1;
 }
