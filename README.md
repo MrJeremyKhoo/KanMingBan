@@ -1,22 +1,23 @@
 # Personal CLI KanBan
 ## Introduction
 
-KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to provide a simple and lightweight solution for managing tasks without relying on heavy dependencies or external services. The name "KanMingBan" is derived from "看命板" which translates to "Life Lookup board" in Chinese.
+KanMingBan is a CLI-based Personal Kanban Board. It aims to provide a simple and lightweight solution for managing tasks. 
+The name "KanMingBan" is derived from "看命板".
 
 ## Motivation
 
-Currently it is written in C only using gcc libraries (binary is only 80kilo bytes)
+Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte
 
-Not written in Rust because there should be no need for strict memory safety. essentially there is one data structure and one user
+Not written in Rust because there should be no need for strict memory safety. Essentially there is one data structure and one user
 
-Not written in C++/Java because there is no need for their abstract data types, there is essentially only one data structure
+Not in Golang, there is no need for bounds checking and garbage collection for a simple application
 
-Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application
+Not written in C++/Java because there is no need for their abstract data types, there is essentially only one type data structure
+
 
 ## Install
-## Installing a Tarball (.tar.gz) on Linux
 
-1. **Download the Tarball**: Download the `tar.gz` file from release
+1. **Download the Tarball**: Download the `tar.gz` file from relese tab
 
 
 2. **Extract the Tarball**:
@@ -60,8 +61,9 @@ regress task to prev column
 <executable> r [task ID]
 ```
 ### Tips:
-you can add the following to bashrc so that the board opens every time you spawn a window
+you can add the following to bashrc so that the board opens every time you spawn a window, you can also add an alias in bashrc. i like to use the letter 'a' because all the crud commands are near to it.
 ```
+alias a='kmb'
 kmb
 ```
 you can use grep, awk, less and other GNU utils to manipulate the output
