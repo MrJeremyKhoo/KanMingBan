@@ -31,10 +31,9 @@ int availID() {
     char *availIDTag = NULL;
     char *endSquareBracket= NULL;
     char *startSquareBracket= NULL;
-    char *largestNum= NULL;
     char* endIdChar = NULL;
-    long num = 0;
-    long oldLength = 0;
+    int num = 0;
+    int oldLength = 0;
     // Find the first occurrence of the header
     availIDTag = strstr(buffer, "Avai-ID");
     endSquareBracket = strchr(availIDTag, ']');
@@ -77,11 +76,11 @@ int availID() {
     int length = snprintf(NULL, 0, "%d", num);
      
     int position =  endIdChar - buffer;
-    int newSize = fileSize - length;
-    char *newBuffer = (char *)malloc(newSize);
     int hasComma = (endIdChar != endSquareBracket);
+    int newSize = fileSize - length - hasComma;
+    char *newBuffer = (char *)malloc(newSize);
     memcpy(newBuffer, buffer, position - length);
-    memcpy(newBuffer + position - length, buffer + position + hasComma, fileSize - position - length);
+    memcpy(newBuffer + position - length, buffer + position + hasComma, fileSize - position - hasComma);
 
     fseek(fptr, 0, SEEK_SET);
     fwrite(newBuffer, 1, newSize, fptr); // -1 to exclude null terminator

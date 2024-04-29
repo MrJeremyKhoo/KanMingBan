@@ -27,7 +27,6 @@ void deleteTaskFile(char* id) {
 		checkFileSize(bytesRead, fileSize);
     buffer[fileSize] = '\0'; // Null-terminate the string
 
-    char *lastHeader = NULL;
     char *lastClosingBracket = NULL;
 
     char* idplace = strstr(buffer, id);
