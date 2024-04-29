@@ -6,17 +6,11 @@
 #include <string.h>
 
 enum Command {
-//add
-  add ='a',
-//regress
-  regress ='r',
-//delete
-  del = 'd',
-//swap
-  swap = 's',
-
+	add ='a',
+	regress ='r',
+	del = 'd',
+	swap = 's',
 	view = 'v',
-
 	promote = 'f',
 };
 void command(char c, char* id);

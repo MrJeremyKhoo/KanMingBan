@@ -5,17 +5,20 @@
 #include "./global.h"
 #include <unistd.h>
 
+
 const char *program_directory;
 
 typedef char*** ARRAY_OF_STRARRAY;
 int main(int argc, char *argv[]) {
-      char path[1024];
+    char path[1024];
     ssize_t len = readlink("/proc/self/exe", path, sizeof(path) - 1);
     if (len != -1) {
-        path[len] = '\0';
-        char *last_slash = strrchr(path, '/');
-        *last_slash = '\0'; // Replace the last '/' with '\0' to get the directory path
-        program_directory = path;
+      path[len] = '\0';
+      char *last_slash = strrchr(path, '/');
+      *last_slash = '\0'; // Replace the last '/' with '\0' to get the directory path
+      char * pd = malloc(len*sizeof(char));
+      memcpy(pd, path,len);
+      program_directory = pd;
     } else {
         perror("readlink");
     }
@@ -32,8 +35,9 @@ int main(int argc, char *argv[]) {
   }
   else if (argc == 2){
     command(*argv[1], 0x0);
-  }
+  } else if (argc == 1) {
       command('v', "0");
+  }
 //  // Print the number of command-line arguments
 //    printf("Number of arguments: %d\n", argc);
 //

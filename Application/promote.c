@@ -46,7 +46,6 @@ void promoteTaskFile(char* id) {
     parseHeaderToArray(buffer, &headerArray);
     //determine header of id
     char *header_start = strstr(buffer, "\"HEADER\":");
-    char *header_opening_bracket = strchr(header_start, '[');
     char *header_ending_bracket = strchr(header_start + 1, ']');
   //todo:add more headers
     for (int i = 0; i < 3; ++i) {
@@ -66,16 +65,11 @@ void promoteTaskFile(char* id) {
       openingClosingBracket = firstSquareBracket + 1;
     }
     lastClosingBracket = strchr(openingClosingBracket, '}');
-    // Calculate the position to insert the task
-    int position = openingClosingBracket - buffer;
     // Create new buffer with enough space for the new task and null terminator
-    int taskLen =  lastClosingBracket - openingClosingBracket;
     int taskLen2 =  lastClosingBracket - strchr(openingClosingBracket, '{') + 1;
     char * task = malloc(taskLen2 * sizeof(char));
     memcpy(task, strchr(openingClosingBracket,'{'), taskLen2);
     task[taskLen2] = '\0';
-    int newSize = fileSize - taskLen;
-    char *newBuffer = (char *)malloc(newSize);
 
     deleteTaskFile(id);
     addTaskFile(task, promotionHeader);

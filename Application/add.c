@@ -7,16 +7,17 @@
 #include <string.h>
 
 char* strreversechar(char *ptr, char target) {
+    char* ptrz = 0;
     if (ptr == NULL) { 
         return NULL;
     }
     ptr--; // Move one position back
     // Search backwards 
-    while (ptr > 0 && *ptr != target) { 
+    while (ptr > ptrz && *ptr != target) { 
         ptr--;
     }
     // Check if found
-    if (ptr > 0) { 
+    if (ptr > ptrz) { 
         return ptr;
     } else {
         return NULL; 

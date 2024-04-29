@@ -31,10 +31,9 @@ int availID() {
     char *availIDTag = NULL;
     char *endSquareBracket= NULL;
     char *startSquareBracket= NULL;
-    char *largestNum= NULL;
     char* endIdChar = NULL;
-    long num = 0;
-    long oldLength = 0;
+    int num = 0;
+    int oldLength = 0;
     // Find the first occurrence of the header
     availIDTag = strstr(buffer, "Avai-ID");
     endSquareBracket = strchr(availIDTag, ']');

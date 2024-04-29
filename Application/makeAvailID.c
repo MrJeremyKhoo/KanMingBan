@@ -28,10 +28,6 @@ void makeAvailID(int id) {
     char *availIDTag = NULL;
     char *endSquareBracket= NULL;
     char *startSquareBracket= NULL;
-    char *largestNum= NULL;
-    char* endIdChar = NULL;
-    long num = 0;
-    long oldLength = 0;
     // Find the first occurrence of the header
     availIDTag = strstr(buffer, "Avai-ID");
     endSquareBracket = strchr(availIDTag, ']');
