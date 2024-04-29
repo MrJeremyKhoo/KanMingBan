@@ -90,6 +90,9 @@ kmb
 }
 a
 ```
+- commandParser.h is where you can change the command shortcuts
+![image](https://github.com/MrJeremyKhoo/KanMingBan/assets/73585045/5446ecd8-c281-4016-8337-c3f9fb359e8b)
+
 
 ## RoadMap MVP:
 - ~Draw table~
