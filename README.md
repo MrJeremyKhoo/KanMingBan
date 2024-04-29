@@ -9,7 +9,7 @@ The name "KanMingBan" is derived from "看命板".
 
 Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte.
 
-The board is printed to stdout, If you want a TUI/GUI below are some options.
+The board is printed to stdout, If you want a TUI/GUI below are some options. I don't see a point in Vim bindings, but some of the alternatives have them. You can change the aliases in the file commandParser.h to Vim bindings if you'd like
 
 Not written in Rust because there should be no need for strict memory safety. Essentially there is one data structure and one user
  - There is a rust kanban [here](https://lib.rs/crates/rust-kanban)
