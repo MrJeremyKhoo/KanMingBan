@@ -82,7 +82,7 @@ kmb
 ```
 - you can use grep, awk, less and other GNU utils to manipulate the output
 
-- if you like to dedicate a Tmux instance to the board, I'd suggest you set a bash function to clear the terminal before running the command
+- if you like you have have a bash function that clears the terminal before printing the table
  ```
   a() {
   clear
