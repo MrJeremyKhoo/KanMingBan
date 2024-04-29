@@ -28,3 +28,6 @@ kmb
 Application/.dirstamp
 Business/.dirstamp
 Presentation/.dirstamp
+autom4te.cache/
+*.tar.gz
+data/*
