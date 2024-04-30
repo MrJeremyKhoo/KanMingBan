@@ -54,7 +54,7 @@ Out of all alternatives, this cli kanban is the smallest and fastest.
      ./configure; sudo make uninstall
      
 ## How to use
-**Known bug: spaces, in task name breaks the data file. go to where binary is installed and fix kmb.dat**
+**Known bug: spaces in task name breaks the data file. go to where binary is installed and fix kmb.dat**
 view board:
 ```
 kmb
