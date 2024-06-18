@@ -1,9 +1,18 @@
 #include <stdio.h>
 #include "table.h"
+#include "kmbInit.h"
 
 void drawRowBorder(int cellWidth, int columns) {
     printf(" ");
     for (int i = 0; i < columns * (cellWidth + 2) + columns - 1; i++) {
+        printf("_");
+    }
+    printf("\n");
+}
+
+void drawTopRowBorder(int cellWidth, int columns) { //put your inpiraitonal quote here
+    printf(" \"But they layed bricks everyday...\"");
+    for (int i = 36; i < columns * (cellWidth + 2) + columns - 1; i++) {
         printf("_");
     }
     printf("\n");
@@ -14,7 +23,8 @@ void drawDataInRow(int cellWidth, char* kmb) {
 
 }
 
-void drawTable(int cellWidth, struct kmb kmb) {
+void drawTable(int cellWidth, struct kmb * kmbptr) {
+  struct kmb kmb = *kmbptr;
   int columns = kmb.column;
   int rows = kmb.row;
     drawRowBorder(cellWidth, columns);
@@ -29,6 +39,7 @@ void drawTable(int cellWidth, struct kmb kmb) {
     
     }
   }
+  freeKanMingBan(kmbptr, columns, rows);
 
 }
 

@@ -79,11 +79,11 @@ void parseFileIntoKMB(FILE *fptr, struct kmb *pkmb1) {
   parseTaskToKmb(buffer, pkmb1);
 }
 
-struct kmb openFile() {
+struct kmb* openFile() {
   char filename[256]; // Adjust the size as per your needs
   snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
   FILE *fptr = fopen(filename, "rb");
   struct kmb *pkmb1 = createKanMingBan(100, 3, 20);
   parseFileIntoKMB(fptr, pkmb1); 
-  return *pkmb1;
+  return pkmb1;
 }

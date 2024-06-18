@@ -2,7 +2,7 @@
 AC_PREREQ([2.69])
 
 # Project name, version, contact email
-AC_INIT([kmb], [1.0], [jeremykhoois@gmail.com])
+AC_INIT([kmb], [1.1], [jeremykhoois@gmail.com])
 
 # Source code directory
 AC_CONFIG_SRCDIR([main.c])

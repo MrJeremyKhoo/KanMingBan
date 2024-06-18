@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
     } else {
         perror("readlink");
     }
-
   //table: draw table
   //dataparser: openfile
   //todo: does not check size of char param
