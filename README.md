@@ -116,6 +116,7 @@ a
 - ~add task by name~
 - ~Recieve from stdin~
 ## RoadMap iteration2:
+- Store Avaliable numbers in heaps
 - code quality refactor
 - code performance refactor
 - Memory leakfix
