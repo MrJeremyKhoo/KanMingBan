@@ -34,7 +34,7 @@ include_HEADERS = \
     Application/taskString.h \
     Application/makeAvailID.h
 
-AM_CFLAGS = -Wall -Wextra
+AM_CFLAGS = -Wall -Wextra -O3 -funroll-loops
 
 dist_data_DATA = data/kmb.dat
 

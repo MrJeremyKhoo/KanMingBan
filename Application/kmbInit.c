@@ -28,9 +28,10 @@ void freeKanMingBanRows(ARRAY_OF_STRARRAY KanMingBan, int i, int numberRows) {
     }
 }
 
-void freeKanMingBan(ARRAY_OF_STRARRAY *KanMingBan, int numberColumns, int numberRows) {
+void freeKanMingBan(struct kmb *kmb, int numberColumns, int numberRows) {
+  ARRAY_OF_STRARRAY KanMingBan = kmb->KanMingBan;
   for (int i = 0; i < numberColumns; i++) {
-    freeKanMingBanRows(*KanMingBan, i, numberRows);
+    freeKanMingBanRows(KanMingBan, i, numberRows);
     free(KanMingBan[i]); 
   }
   free(KanMingBan);
