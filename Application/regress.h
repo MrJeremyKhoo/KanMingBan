@@ -5,7 +5,6 @@
 #include "headerParser.h"
 typedef char*** ARRAY_OF_STRARRAY;
 
-
 void regressTaskFile(char* id);
 
 #endif
