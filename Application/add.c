@@ -24,6 +24,13 @@ char* strreversechar(char *ptr, char target) {
     }   
 }
 
+long int getFileSize(FILE *fptr) {
+    fseek(fptr, 0, SEEK_END);
+    long int fileSize = ftell(fptr);
+    return fileSize;
+
+}
+
 void addTaskFile(char* task, char* header) {
     char filename[256]; // Adjust the size as per your needs
     snprintf(filename, sizeof(filename), "%s/%s", program_directory, "data/kmb.dat");
@@ -33,10 +40,7 @@ void addTaskFile(char* task, char* header) {
         return;
     }
 
-    // Determine the size of the file
-    fseek(fptr, 0, SEEK_END);
-    long int fileSize = ftell(fptr);
-    fseek(fptr, 0, SEEK_SET);
+    long int fileSize = getFileSize(fptr);
 
     // Allocate memory dynamically for the file content
     char *buffer = (char *)malloc(fileSize + 1); // +1 for null terminator

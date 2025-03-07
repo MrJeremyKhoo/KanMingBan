@@ -22,9 +22,8 @@ int main(int argc, char *argv[]) {
     } else {
         perror("readlink");
     }
-  //table: draw table
+
   //dataparser: openfile
-  //todo: does not check size of char param
   if(argc  ==  3) {
     if(argv[1] == NULL) {
       command('v', "0");
@@ -37,14 +36,7 @@ int main(int argc, char *argv[]) {
   } else if (argc == 1) {
       command('v', "0");
   }
-//  // Print the number of command-line arguments
-//    printf("Number of arguments: %d\n", argc);
-//
-//    // Print each command-line argument
-//    for (int i = 0; i < argc; i++) {
-//        printf("argv[%d] = %s\n", i, argv[i]);
-//    }
-//
+
     return 0;
 }
 

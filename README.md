@@ -1,22 +1,33 @@
 # Personal CLI KanBan
 ## Introduction
 
-KanMingBan is a CLI-based Personal Kanban Board written in pure C. It aims to provide a simple and lightweight solution for managing tasks without relying on heavy dependencies or external services. The name "KanMingBan" is derived from "看命板" which translates to "Life Lookup board" in Chinese.
+KanMingBan is a CLI-based Personal Kanban Board. It aims to provide a simple and lightweight solution for managing tasks.
+The name "KanMingBan" is derived from "看命板".
 
+![image](https://github.com/MrJeremyKhoo/KanMingBan/assets/73585045/089f602b-01af-4618-b9b7-a5697789fd04)
 ## Motivation
 
-Currently it is written in C only using gcc libraries (binary is only 80kilo bytes)
+Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte.
 
-Not written in Rust because there should be no need for strict memory safety. essentially there is one data structure and one user
+The board is printed to stdout, If you want a TUI/GUI below are some options. I don't see a point in Vim bindings, but some of the alternatives below have them. You can change the aliases in the file commandParser.h to Vim bindings if you'd like
 
-Not written in C++/Java because there is no need for their abstract data types, there is essentially only one data structure
+Not written in Rust because there should be no need for strict memory safety. Essentially there is one data structure and one user
+ - There is a rust kanban [here](https://lib.rs/crates/rust-kanban)
 
-Not in Golang because of performance, there is no need for bounds checking and garbage collection for a simple application
+Not in Golang, there is no need for bounds checking and garbage collection for a simple application
+- There is a Go kanban [here](https://github.com/singalhimanshu/taskgo)
+  
+Not written in C++/Java because there is no need for their abstract data types, there is essentially only one type data structure
+- There is a C++/Qt kanban [here](https://github.com/StefanoLusardi/Kanban)
+  
+Not in python/JS runtime because there is no need for just-in-time compilation for a CRUD application
+- There is a python kanban [here](https://github.com/kitplummer/clikan)
+
+Out of all alternatives, this cli kanban is the smallest and fastest.
 
 ## Install
-## Installing a Tarball (.tar.gz) on Linux
 
-1. **Download the Tarball**: Download the `tar.gz` file from release
+1. **Download the Tarball**: Download the `tar.gz` file from relese tab
 
 
 2. **Extract the Tarball**:
@@ -43,28 +54,46 @@ Not in Golang because of performance, there is no need for bounds checking and g
      ./configure; sudo make uninstall
      
 ## How to use
-add task:
-```
-<executable> a "task1" 
-```
-delete:
-```
-<executable> d [task ID]
-```
-forward task to next column
-```
-<executable> f [task ID]
-```
-regress task to prev column
-```
-<executable> r [task ID]
-```
-### Tips:
-you can add the following to bashrc so that the board opens every time you spawn a window
+**Known bug: spaces in task name breaks the data file. go to where binary is installed and fix kmb.dat**
+view board:
 ```
 kmb
 ```
-you can use grep, awk, less and other GNU utils to manipulate the output
+add task:
+```
+kmb a "task1" 
+```
+delete:
+```
+kmb d [task ID]
+```
+forward task to next column
+```
+kmb f [task ID]
+```
+regress task to prev column
+```
+kmb r [task ID]
+```
+### Tips:
+- you can add the following to bashrc so that the board opens every time you spawn a window, you can also add an alias in bashrc. i like to use the letter 'a' because all the commands are near 'a' on the keyboard
+```
+alias a='kmb'
+kmb
+```
+- you can use grep, awk, less and other GNU utils to manipulate the output
+
+- if you like you have have a bash function that clears the terminal before printing the table
+ ```
+  a() {
+  clear
+  kmb $1 $2
+}
+a
+```
+- commandParser.h is where you can change the command shortcuts
+![image](https://github.com/MrJeremyKhoo/KanMingBan/assets/73585045/5446ecd8-c281-4016-8337-c3f9fb359e8b)
+
 
 ## RoadMap MVP:
 - ~Draw table~
@@ -87,6 +116,7 @@ you can use grep, awk, less and other GNU utils to manipulate the output
 - ~add task by name~
 - ~Recieve from stdin~
 ## RoadMap iteration2:
+- Store Avaliable numbers in heaps
 - code quality refactor
 - code performance refactor
 - Memory leakfix
