@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "table.h"
-#include "kmbInit.h"
+#include "../Application/kmbInit.h"
 
 void drawRowBorder(int cellWidth, int columns) {
     printf(" ");
