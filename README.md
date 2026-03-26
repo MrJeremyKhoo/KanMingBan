@@ -2,12 +2,12 @@
 ## Introduction
 
 KanMingBan is a CLI-based Personal Kanban Board. It aims to provide a simple and lightweight solution for managing tasks.
-The name "KanMingBan" is derived from "看命板".
+The name "KanMingBan" is derived from "看命板". It is a minimalist CLI Kanban, solo developer project management, terminal-based task tracker, and lightweight Jira alternative.
 
 ![image](https://github.com/MrJeremyKhoo/KanMingBan/assets/73585045/089f602b-01af-4618-b9b7-a5697789fd04)
 ## Motivation
 
-Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte.
+Currently it is written in C only using gcc libraries (binary is only 80kB); A CRUD program doesn't need to be any bigger than a megabyte
 
 The board is printed to stdout, If you want a TUI/GUI below are some options. I don't see a point in Vim bindings, but some of the alternatives below have them. You can change the aliases in the file commandParser.h to Vim bindings if you'd like
 
@@ -116,15 +116,11 @@ a
 - ~add task by name~
 - ~Recieve from stdin~
 ## RoadMap iteration2:
-- Store Avaliable numbers in heaps
-- code quality refactor
-- code performance refactor
-- Memory leakfix
+- Factor out the writing of JSON to a writer/reader function
+- Store Avaliable numbers in a heap
+- Memory leakfix adding 
+- Allow space in task name
 - drilldown description to task
-- Add task in proper order
-- Task lifecycle management
-- Task throughput analysis
-- Add more multiple columns
 
 ## RoadMap iteration3:
 - Add multiple boards
