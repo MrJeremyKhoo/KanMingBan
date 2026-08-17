@@ -41,6 +41,7 @@ void addTaskFile(char* task, char* header) {
     }
 
     long int fileSize = getFileSize(fptr);
+    rewind(fptr);
 
     // Allocate memory dynamically for the file content
     char *buffer = (char *)malloc(fileSize + 1); // +1 for null terminator
