@@ -117,8 +117,9 @@ a
 - ~Recieve from stdin~
 ## RoadMap iteration2:
 - Factor out the writing of JSON to a writer/reader function
+- Allow box to change based on longest text in table
 - Store Avaliable numbers in a heap
-- Memory leakfix adding 
+- ~Memory leakfix adding~
 - Allow space in task name
 - drilldown description to task
 
